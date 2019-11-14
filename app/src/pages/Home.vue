@@ -26,7 +26,7 @@
         active-text-color="#e0641a"
         route
       >
-        <el-menu-item :index="item.path" v-for="item in menu" :key="item.name">{{item.text}}</el-menu-item>
+        <el-menu-item :index="item.text" v-for="item in menu" :key="item.text">{{item.text}}</el-menu-item>
       </el-menu>
       <!-- <nav>
         <li v-for="(item,idx) in menu" v-bind:class="{active:idx===activeIndex}" v-on:click="changeIndex(idx)" :key="item.text">
@@ -97,6 +97,159 @@
           </div>
         </div>
       </section>
+      <section class="navlist4">
+        <div class="nav4title1">
+          <img src="http://pic1.quanmingwang.com/t/t_cSyhaBkGJ9_85689.png" alt />
+        </div>
+        <!-- 新中式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/1evY6TQGQB_20190126_!!43996.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 美式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/t1h6Ru7qSa_20190126_!!97159.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 欧式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/KED5KQsg4H_20190126_!!87034.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 热卖单品 -->
+        <div class="hotgoods">
+          <div class="lunbo">
+            <div class="lunboImgWrap" :style="lunboShow">
+              <div class="lunboImg" v-for="(item,index) in lunboList" :key="index">
+                <img :src="item" alt />
+                <!-- <img src="http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg" alt /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="navlist4">
+        <div class="nav4title1">
+          <img src="http://pic1.quanmingwang.com/t/t_cSyhaBkGJ9_85689.png" alt />
+        </div>
+        <!-- 新中式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/1evY6TQGQB_20190126_!!43996.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 美式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/t1h6Ru7qSa_20190126_!!97159.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 欧式 -->
+        <div class="nav4title2">
+          <img src="http://pic1.quanmingwang.com/shop/KED5KQsg4H_20190126_!!87034.jpg" alt />
+        </div>
+        <el-row>
+          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
+                class="image"
+              />
+              <div style="padding: 14px;">
+                <span>新经典时尚中式</span>
+                <div class="bottom clearfix">
+                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </section>
+      <section class="menu2">
+        <el-menu
+          :default-active="activeIndex3"
+          class="el-menu-demo"
+          mode="horizontal"
+          background-color="#f0f0f0"
+          text-color="#323232"
+          active-text-color="##d42d25"
+        >
+          <el-menu-item :index="item.index" v-for="item in menu2" :key="item.text">{{item.text}}</el-menu-item>
+        </el-menu>
+      </section>
     </main>
     <footer>
       <el-menu
@@ -136,80 +289,92 @@
 export default {
   data() {
     return {
-      activeIndex: "/home",
+      activeIndex: "推荐",
       activeIndex2: "/home",
+      activeIndex3: "1",
+      mark: 0,
+      lunboShow: {
+        // transform: translateX(0)
+        left: 0
+      },
       menu: [
         {
           name: "home",
           path: "/home",
-          text: "推荐",
-          icon: "el-icon-s-home"
+          text: "推荐"
         },
         {
           name: "list",
           path: "/list",
-          text: "墙地材料",
-          icon: "el-icon-menu"
+          text: "墙地材料"
         },
         {
           name: "cart",
           path: "/cart",
-          text: "卫浴用品",
-          icon: "el-icon-shopping-cart-2"
+          text: "卫浴用品"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "灯饰照明",
-          icon: "el-icon-s-custom"
+          text: "灯饰照明"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "厨房用品",
-          icon: "el-icon-s-custom"
+          text: "厨房用品"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "门/配件/五金",
-          icon: "el-icon-s-custom"
+          text: "门/配件/五金"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "客厅",
-          icon: "el-icon-s-custom"
+          text: "客厅"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "卧室",
-          icon: "el-icon-s-custom"
+          text: "卧室"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "餐厅",
-          icon: "el-icon-s-custom"
+          text: "餐厅"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "书房",
-          icon: "el-icon-s-custom"
+          text: "书房"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "儿童房",
-          icon: "el-icon-s-custom"
+          text: "儿童房"
         },
         {
           name: "mine",
           path: "/mine",
-          text: "红木馆",
-          icon: "el-icon-s-custom"
+          text: "红木馆"
+        }
+      ],
+      menu2: [
+        {
+          index: "1",
+          text: "现代"
+        },
+        {
+          index: "2",
+          text: "中式"
+        },
+        {
+          index: "3",
+          text: "欧式"
+        },
+        {
+          index: "4",
+          text: "美式"
         }
       ],
       banner: [
@@ -353,13 +518,38 @@ export default {
           text: "我的",
           icon: "iconfont iconwode"
         }
+      ],
+      lunboList: [
+        "http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg",
+        "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
+        "http://pic1.quanmingwang.com/shop/VLvxasIRbl_20180609_!!60844.jpg",
+        "http://pic1.quanmingwang.com/shop/cZlRDl3P3Y_20190212_!!83184.jpg",
+        "http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg",
+        "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
+        "http://pic1.quanmingwang.com/shop/VLvxasIRbl_20180609_!!60844.jpg",
+        "http://pic1.quanmingwang.com/shop/cZlRDl3P3Y_20190212_!!83184.jpg"
       ]
     };
   },
   methods: {
     sortjump() {
       this.$router.push("/Sort");
+    },
+
+    autPlay() {
+      this.mark++;
+      if (this.mark === 5) {
+        this.mark = 0;
+      }
+      let num = this.mark * 114;
+      this.lunboShow.left = "-" + num + "px";
+    },
+    play() {
+      setInterval(this.autPlay, 3000);
     }
+  },
+  created() {
+    this.play();
   }
 };
 </script>
@@ -372,6 +562,10 @@ export default {
 body {
   display: flex;
   flex-direction: column;
+}
+img {
+  width: 100%;
+  height: 100%;
 }
 * {
   margin: 0;
@@ -407,12 +601,8 @@ header {
     align-items: center;
     a {
       height: 100%;
+      width: vw(179);
       text-decoration: none;
-      img {
-        display: block;
-        border: 0;
-        height: 100%;
-      }
     }
     .inputText {
       width: vw(464);
@@ -430,9 +620,14 @@ header {
     overflow: auto;
     display: flex;
     li {
-      line-height: vw(82) !important;
       min-width: vw(148);
       flex-shrink: 0;
+      line-height: vw(82) !important;
+      height: vw(82) !important;
+    }
+    .is-active {
+      background-color: #e0641a !important;
+      color: #fff !important;
     }
   }
   ul::-webkit-scrollbar {
@@ -475,6 +670,7 @@ main {
       img {
         display: block;
         width: vw(74);
+        height: vw(74);
       }
     }
   }
@@ -555,6 +751,77 @@ main {
             }
           }
         }
+      }
+    }
+  }
+  .navlist4 {
+    width: vw(714);
+    height: 100%;
+    background-color: #f0f0f0;
+    margin: 0 auto;
+    .nav4title1 {
+      width: 100%;
+      height: vw(130);
+    }
+    .nav4title2 {
+      width: 100%;
+      height: vw(50);
+    }
+    .el-card {
+      width: vw(348.5);
+      margin-top: vw(18);
+    }
+    .el-card__body {
+      span {
+        font-size: 14px;
+        color: #e8ac44;
+      }
+      .nav4desc {
+        font-size: 12px;
+        overflow: hidden;
+        color: #979797;
+      }
+    }
+    .el-row {
+      margin-bottom: vw(18);
+    }
+    .hotgoods {
+      margin-top: vw(15);
+      padding-top: vw(82);
+      width: 100%;
+      height: vw(272);
+      background-image: url(http://pic1.quanmingwang.com/t/t_B1b73ZVwgN_21952.png);
+      background-size: 100% auto;
+      .lunbo {
+        width: vw(680);
+        height: vw(170);
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        .lunboImgWrap {
+          width: vw(2760);
+          height: vw(170);
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: 0.5s;
+        }
+        .lunboImg {
+          width: vw(220);
+          margin-right: vw(10);
+          float: left;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  .menu2 {
+    ul {
+      .is-active {
+        font-weight: 700;
+        border-bottom: 3px solid #d42d25 !important;
       }
     }
   }
