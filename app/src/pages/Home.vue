@@ -15,7 +15,7 @@
           <input type="text" placeholder="请输入关键词" class="inputText" />
           <!-- <button type="submit" class="">搜索</button> -->
         </form>
-        <i class="iconfont iconleimupinleifenleileibie"></i>
+        <i class="iconfont iconleimupinleifenleileibie" @click="sortjump"></i>
       </div>
       <el-menu
         :default-active="activeIndex"
@@ -52,27 +52,47 @@
         </li>
       </nav>
       <section class="navlist3">
-        <div class="rTitle"><img src="http://pic1.quanmingwang.com/t/t_L6q2pDbELU_62324.jpg" alt=""></div>
+        <div class="rTitle">
+          <img src="http://pic1.quanmingwang.com/t/t_L6q2pDbELU_62324.jpg" alt />
+        </div>
         <div class="rMain">
-          <div class="rMainLeft"><img src="http://pic1.quanmingwang.com/shop/fpO6GPgs9a_20190118_!!96139.jpg" alt=""></div>
+          <div class="rMainLeft">
+            <img src="http://pic1.quanmingwang.com/shop/fpO6GPgs9a_20190118_!!96139.jpg" alt />
+          </div>
           <div class="rMainRight">
             <nav class="rnavlist">
-              <li><img src="http://pic1.quanmingwang.com/shop/Z3F2RM5LWZ_20180416_!!13036.jpg" alt=""></li>
-              <li><img src="http://pic1.quanmingwang.com/shop/VsLFQRgbmf_20180608_!!25108.jpg" alt=""></li>
-              <li><img src="http://pic1.quanmingwang.com/shop/MuF4Csag5M_20180416_!!84842.jpg" alt=""></li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/Z3F2RM5LWZ_20180416_!!13036.jpg" alt />
+              </li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/VsLFQRgbmf_20180608_!!25108.jpg" alt />
+              </li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/MuF4Csag5M_20180416_!!84842.jpg" alt />
+              </li>
             </nav>
           </div>
         </div>
       </section>
       <section class="navlist3">
-        <div class="rTitle"><img src="http://pic1.quanmingwang.com/t/t_Nb7ikU86VU_38987.jpg" alt=""></div>
+        <div class="rTitle">
+          <img src="http://pic1.quanmingwang.com/t/t_Nb7ikU86VU_38987.jpg" alt />
+        </div>
         <div class="rMain">
-          <div class="rMainLeft"><img src="http://pic1.quanmingwang.com/shop/kumEif3dzX_20190118_!!36415.jpg" alt=""></div>
+          <div class="rMainLeft">
+            <img src="http://pic1.quanmingwang.com/shop/kumEif3dzX_20190118_!!36415.jpg" alt />
+          </div>
           <div class="rMainRight">
             <nav class="rnavlist">
-              <li><img src="http://pic1.quanmingwang.com/shop/eDf0gwFPGN_20180608_!!97384.jpg" alt=""></li>
-              <li><img src="http://pic1.quanmingwang.com/shop/27HgQeFemr_20180416_!!50930.jpg" alt=""></li>
-              <li><img src="http://pic1.quanmingwang.com/shop/ZdEluvTCnH_20180416_!!67407.jpg" alt=""></li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/eDf0gwFPGN_20180608_!!97384.jpg" alt />
+              </li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/27HgQeFemr_20180416_!!50930.jpg" alt />
+              </li>
+              <li>
+                <img src="http://pic1.quanmingwang.com/shop/ZdEluvTCnH_20180416_!!67407.jpg" alt />
+              </li>
             </nav>
           </div>
         </div>
@@ -335,6 +355,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    sortjump() {
+      this.$router.push("/Sort");
+    }
   }
 };
 </script>
@@ -475,57 +500,57 @@ main {
           width: vw(356);
         }
       }
-      &:nth-of-type(6){
-        img{
+      &:nth-of-type(6) {
+        img {
           border-right: 0;
         }
       }
     }
   }
-  .navlist3{
+  .navlist3 {
     width: 100%;
     margin-top: vw(16);
     height: vw(468);
     background-color: #f0f0f0;
-    .rTitle{
-      img{
+    .rTitle {
+      img {
         display: block;
         width: 100%;
       }
     }
-    .rMain{
+    .rMain {
       width: vw(714);
       height: vw(358);
       margin: vw(10) auto;
-      .rMainLeft{
+      .rMainLeft {
         width: vw(358);
         height: vw(358);
         float: left;
-        img{
+        img {
           width: 100%;
           height: 100%;
         }
       }
-      .rMainRight{
+      .rMainRight {
         width: vw(356);
         height: 100%;
         background-color: #e1e1e1;
         float: left;
-        nav{
+        nav {
           width: 100%;
           height: 100%;
           display: flex;
-          justify-content:flex-end; 
+          justify-content: flex-end;
           align-items: flex-end;
           flex-wrap: wrap;
-          li{
+          li {
             width: vw(176);
             height: vw(178);
-            img{
+            img {
               width: 100%;
               height: 100%;
             }
-            &:nth-of-type(1){
+            &:nth-of-type(1) {
               width: 100%;
             }
           }
