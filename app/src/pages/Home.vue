@@ -818,7 +818,7 @@ main {
       
       .is-active {
         font-weight: 700;
-        border-bottom: 3px solid #d42d25 !important;
+        // border-bottom: 3px solid #d42d25 !important;
       }
     }
   }
