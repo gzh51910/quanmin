@@ -295,21 +295,6 @@
           {{item.text}}
         </el-menu-item>
       </el-menu>
-      <!-- <p>
-        <i class="iconfont iconshouye"></i>首页
-      </p>
-      <p>
-        <i class="iconfont iconleimupinleifenleileibie"></i>分类
-      </p>
-      <p>
-        <i class="iconfont iconhezuo"></i>商务合作
-      </p>
-      <p>
-        <i class="iconfont icongouwuche"></i>购物车
-      </p>
-      <p>
-        <i class="iconfont iconwode"></i>我的
-      </p>-->
     </footer>
   </div>
 </template>
@@ -589,13 +574,11 @@ export default {
       }else if(idx==3){
          s=5112;
       }
-      // console.log(s);
       document.body.scrollTop=s;
     },
     handleScroll(e) {
       var scrollY =document.documentElement.scrollTop || document.body.scrollTop;
       console.log(scrollY);  //3700 3938  4407  5112
-      // window.scrollTo(0, s+"px");
       if(scrollY>=3700){
         this.menu2Style.position="fixed";
         this.menu2Style.top="45px";
