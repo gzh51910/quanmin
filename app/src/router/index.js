@@ -14,6 +14,7 @@ import List from '../pages/List.vue';
 import Goods from '../pages/Goods.vue';
 import Sort from '../pages/Sort.vue';
 import Hezuo from '../pages/Hezuo';
+import Loginagument from '../pages/loginagument.vue';
 
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
@@ -56,20 +57,25 @@ const router = new VueRouter({
             component: Goods
         },
         {
-            name:'sort',
-            path:'/sort',
-            component:Sort
+            name: 'sort',
+            path: '/sort',
+            component: Sort
         },
         {
-            name:'hezuo',
-            path:'/hezuo',
-            component:Hezuo
+            name: 'hezuo',
+            path: '/hezuo',
+            component: Hezuo
         },
         {
-            path:'/',
-            redirect:'/home',
+            path: '/',
+            redirect: '/home',
             // component:Home
         },
+        {
+            name: 'loginagument',
+            path: '/loginagument',
+            component: Loginagument,
+        }
     ]
 });
 

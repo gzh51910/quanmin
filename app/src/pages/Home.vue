@@ -15,7 +15,7 @@
           <input type="text" placeholder="请输入关键词" class="inputText" />
           <!-- <button type="submit" class="">搜索</button> -->
         </form>
-        <i class="iconfont iconleimupinleifenleileibie"></i>
+        <i class="iconfont iconleimupinleifenleileibie" @click="sortjump"></i>
       </div>
       <el-menu
         :default-active="activeIndex"
@@ -35,11 +35,13 @@
     </header>
 
     <main>
-      <el-carousel trigger="click" height="160px">
-        <el-carousel-item v-for="item in banner" :key="item.src">
-          <img :src="item.src" alt style="width:100%" />
-        </el-carousel-item>
-      </el-carousel>
+      <section class="bannerWrap">
+        <el-carousel trigger="click">
+          <el-carousel-item v-for="item in banner" :key="item.src">
+            <img :src="item.src" alt style="width:100%" />
+          </el-carousel-item>
+        </el-carousel>
+      </section>
       <nav class="navlist1">
         <li v-for="item in navlist1" :key="item.name">
           <img :src="item.src" alt />
@@ -238,7 +240,7 @@
           </el-col>
         </el-row>
       </section>
-      <section class="menu2">
+      <section class="menu2" lazy>
         <el-menu
           :default-active="activeIndex3"
           class="el-menu-demo"
@@ -246,9 +248,36 @@
           background-color="#f0f0f0"
           text-color="#323232"
           active-text-color="##d42d25"
+          :style="menu2Style"
         >
-          <el-menu-item :index="item.index" v-for="item in menu2" :key="item.text">{{item.text}}</el-menu-item>
+          <el-menu-item
+            :index="item.index"
+            v-for="(item,idx) in menu2"
+            :key="item.text"
+            @click="menu2List(idx)"
+          >
+            <span>{{item.text}}</span>
+          </el-menu-item>
         </el-menu>
+        <section class="menu2List">
+          <el-row>
+            <el-col :span="24" v-for="o in 11" :key="o" :offset="0">
+              <el-card :body-style="{ padding: '14px'}">
+                <img
+                  src="http://pic1.quanmingwang.com/meal/meal_x2tvWvAmjA_20190426_!!90783.jpg"
+                  class="image"
+                />
+                <div class="menu2LiDesc">
+                  <span>现代简约XDJY-YX-1</span>
+                  <span>
+                    关注
+                    <i>80</i>人
+                  </span>
+                </div>
+              </el-card>
+            </el-col>
+          </el-row>
+        </section>
       </section>
     </main>
     <footer>
@@ -296,6 +325,10 @@ export default {
       lunboShow: {
         // transform: translateX(0)
         left: 0
+      },
+      menu2Style:{
+        position: "relative",
+        top:0
       },
       menu: [
         {
@@ -514,7 +547,7 @@ export default {
         },
         {
           name: "mine",
-          path: "/mine",
+          path: "/login",
           text: "我的",
           icon: "iconfont iconwode"
         }
@@ -532,6 +565,10 @@ export default {
     };
   },
   methods: {
+    sortjump() {
+      this.$router.push("/Sort");
+    },
+
     autPlay() {
       this.mark++;
       if (this.mark === 5) {
@@ -542,10 +579,37 @@ export default {
     },
     play() {
       setInterval(this.autPlay, 3000);
+    },
+    menu2List(idx) { 
+      let s = 3700; 
+      if(idx==1){
+         s=3938;
+      }else if(idx==2){
+         s=4407;
+      }else if(idx==3){
+         s=5112;
+      }
+      // console.log(s);
+      document.body.scrollTop=s;
+    },
+    handleScroll(e) {
+      var scrollY =document.documentElement.scrollTop || document.body.scrollTop;
+      console.log(scrollY);  //3700 3938  4407  5112
+      // window.scrollTo(0, s+"px");
+      if(scrollY>=3700){
+        this.menu2Style.position="fixed";
+        this.menu2Style.top="45px";
+      }else{
+        this.menu2Style.position="relative";
+        this.menu2Style.top="0";
+      }
     }
   },
   created() {
     this.play();
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll, true);
   }
 };
 </script>
@@ -566,6 +630,18 @@ img {
 * {
   margin: 0;
   padding: 0;
+}
+html,
+body {
+  overflow-y: scroll;
+}
+html,
+body {
+  overflow: scroll;
+  min-height: 101%;
+}
+html {
+  overflow: -moz-scrollbars-vertical;
 }
 header,
 main,
@@ -636,16 +712,27 @@ main {
   overflow: auto;
   width: 100%;
   margin-top: vw(172);
-  margin-bottom: vw(100);
+  margin-bottom: vw(110);
   background-color: #f2f2f2;
-  .el-carousel__button {
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: #b2b2b2;
-  }
-  .is-active .el-carousel__button {
-    opacity: 0.5;
+  .bannerWrap {
+    .el-carousel {
+      height: vw(252) !important;
+    }
+    .el-carousel__item {
+      height: vw(252) !important;
+    }
+    .el-carousel__button {
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      background-color: #b2b2b2;
+    }
+    .is-active .el-carousel__button {
+      opacity: 0.5;
+    }
+    .el-carousel__container {
+      height: vw(252) !important;
+    }
   }
   .navlist1 {
     display: flex;
@@ -773,8 +860,11 @@ main {
         color: #e8ac44;
       }
       .nav4desc {
+        display: block;
         font-size: 12px;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         color: #979797;
       }
     }
@@ -815,10 +905,55 @@ main {
   }
   .menu2 {
     ul {
-      
+      width: 100% !important;
+      height: vw(80) !important;
+      position: relative;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      li {
+        width: 25%;
+        height: vw(80) !important;
+        span {
+          display: block;
+          line-height: vw(77);
+          width: vw(60);
+          margin: 0 auto;
+        }
+      }
       .is-active {
         font-weight: 700;
-        // border-bottom: 3px solid #d42d25 !important;
+        border: 0 !important;
+        span {
+          border-bottom: 3px solid #d42d25;
+        }
+      }
+    }
+    .menu2List {
+      width: vw(714);
+      margin: 0 auto;
+      background-color: #f2f2f2;
+      .menu2LiDesc {
+        height: vw(60);
+        line-height: vw(90);
+        width: 100%;
+        span {
+          font-size: vw(28);
+          color: #323232;
+          &:nth-of-type(1) {
+            font-weight: 700;
+          }
+          &:nth-of-type(2) {
+            display: block;
+            float: right;
+            i {
+              color: #d42d25;
+            }
+          }
+        }
+      }
+      .el-col {
+        margin-bottom: vw(18);
       }
     }
   }
@@ -845,7 +980,6 @@ footer {
     font-size: vw(22);
     color: #4d4d4d;
     i {
-      display: block;
       height: vw(46);
     }
   }
