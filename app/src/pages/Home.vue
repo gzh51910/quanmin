@@ -513,8 +513,8 @@ export default {
           icon: "iconfont icongouwuche"
         },
         {
-          name: "mine",
-          path: "/mine",
+          name: "login",
+          path: "/login",
           text: "我的",
           icon: "iconfont iconwode"
         }
