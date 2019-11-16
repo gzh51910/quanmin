@@ -13,10 +13,10 @@ Router.use((req,res,next)=>{
     // 支持CORS跨域，只需要设置响应头
     // res.header('Access-Control-Allow-Origin','*');
     let currentOrigin = req.get('Origin');
-    let allowOrigin = ['http://localhost:8080','http://localhost:8081']
+    // let allowOrigin = ['http://localhost:8080','http://localhost:8081']
     if(allowOrigin.includes(currentOrigin)){
         res.set({
-            'Access-Control-Allow-Origin':currentOrigin,
+            'Access-Control-Allow-Origin':"*",
             'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,OPTIONS',
             'Access-Control-Allow-HEADERS':"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
         })
