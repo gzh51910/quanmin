@@ -246,7 +246,7 @@
         </section>
       </section>
     </div>
-    <div class="others">
+    <div v-show="num!=0" class="others">
       <el-carousel trigger="click">
         <el-carousel-item v-for="item in oBanner" :key="item.src">
           <img :src="item.src" alt style="width:100%" />
@@ -528,8 +528,11 @@ export default {
       }
     }
   },
-  created() {
+   async created() {
     this.play();
+    let {data} = await this.$axios.get("http://10.3.136.139:1910");
+    console.log(data);
+    
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
