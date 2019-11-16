@@ -30,8 +30,6 @@ Router.get('/', async (req, res) => {
 
 Router.get('/sorts', async (req, res) => {
     let colName = 'typeshop';
-    let
-        {index} = req.query
     let data = await mongodb.find(colName, {})
     res.send(formatData({data}))
 
