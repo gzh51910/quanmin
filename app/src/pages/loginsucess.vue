@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="deng">
     <section class="topbar">
       <div class="manhead">
         <div class="man">
@@ -34,13 +34,13 @@
               <p class="ff">待评价</p>
             </div>
           </el-col>
-          <el-col :span="4.5">
+          <el-col :span="4.2">
             <div class="grid-content bg-purple">
               <i class="el-icon-coin" style=" color: red;"></i>
               <p class="ff">退货/售后</p>
             </div>
           </el-col>
-          <el-col :span="4.5">
+          <el-col :span="4.2">
             <div class="grid-content bg-purple">
               <i class="el-icon-bank-card" style=" color: red;"></i>
               <p class="ff">全部订单</p>
@@ -54,47 +54,63 @@
         <el-row class="fenqi">
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-tickets"></i>
+              <i class="el-icon-tickets" style="color:black"></i>
               我的分期审核
             </div>
           </el-col>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-brush"></i>
+              <i class="el-icon-brush" style="color:black"></i>
               我的贷款
             </div>
           </el-col>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-location-information"></i>
+              <i class="el-icon-location-information" style="color:black"></i>
               收货地址
             </div>
           </el-col>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-lock"></i>
+              <i class="el-icon-lock" style="color:black"></i>
               账号安全
             </div>
           </el-col>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-potato-strips"></i>
+              <i class="el-icon-potato-strips" style="color:black"></i>
               分店管理
             </div>
           </el-col>
         </el-row>
       </div>
-      <el-button round>退出当前账户</el-button>
+      <el-button round @click="loginout">
+        <span>退出当前账户</span>
+      </el-button>
     </div>
+    <section id="footernav">
+      <footernav />
+    </section>
   </div>
 </template>
 <script>
-export default {};
+import footernav from "../pages/footernav.vue";
+export default {
+  components: {
+    footernav
+  },
+  methods: {
+    loginout() {
+      this.$router.push("/Login");
+    }
+  }
+};
 </script>
 <style lang="scss">
 @function vw($px) {
   @return ($px / 750) * 100vw;
 }
+
 .manhead {
   width: 100%;
   height: vw(400);
@@ -132,6 +148,9 @@ export default {};
   width: 100%;
 }
 .second {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   z-index: 2;
   position: absolute;
   bottom: -30%;
@@ -140,14 +159,15 @@ export default {};
   width: 86.6%;
   border-radius: vw(20);
   margin-left: -43.3%;
-  background: pink;
+  background: white;
   overflow: hidden;
   i {
-    margin-left: vw(23);
+    // margin-left: vw(23);
     // text-align: center;
     font-size: vw(70);
   }
   .el-col {
+    align-self: center;
     margin-top: vw(46);
   }
 }
@@ -158,7 +178,8 @@ export default {};
   position: absolute;
   display: flex;
   width: 100%;
-  height: 100%;
+
+  height: 70%;
   background: #f5f5f5;
   .fenqi {
     position: absolute;
@@ -167,23 +188,29 @@ export default {};
     flex-direction: column;
     justify-content: space-between;
     border-radius: vw(10);
-    background: greenyellow;
+    background: white;
     height: vw(400);
     margin-left: vw(80);
     width: 80%;
   }
   i {
-    font-size: vw(50);
+    color: #0000;
+    font-size: vw(40);
   }
   .el-button {
+    text-align: center;
+    margin-left: vw(40);
+    width: 80%;
     background: #f5f5f5;
-    border: red;
+    border: 1px solid red;
     color: red;
     display: flex;
     position: absolute;
-    top: vw(700);
+    top: vw(650);
     left: vw(30);
-    // bottom: vw(10);
+    span {
+      margin: auto;
+    }
   }
 }
 </style>

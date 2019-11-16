@@ -271,6 +271,7 @@ export default {
   @return ($px / 750) * 100vw;
 }
 body {
+  position: relative;
   font-family: Helvetica, SimHei, sans-serif;
 }
 .close {

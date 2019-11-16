@@ -63,7 +63,11 @@ export default {
 @function vw($px) {
   @return ($px / 750) * 100vw;
 }
+
 footer {
+  min-width: 320px;
+  max-width: 750px;
+  margin: 0 auto;
   display: flex;
   height: vw(100);
   width: 100%;
@@ -74,6 +78,9 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  ul {
+    width: 100%;
+  }
   li {
     width: 20%;
     height: 100%;

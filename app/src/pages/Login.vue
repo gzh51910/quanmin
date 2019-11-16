@@ -6,12 +6,12 @@
     <h4>未注册过的手机号验证后将自动创建账号</h4>
 
     <div class="root">
-      <el-form :model="Register" ref="RegisterForm" label-width="0" class="RegisterForm">
+      <el-form :model="loginForm" ref="loginForm" label-width="0">
         <el-form-item prop="phone">
-          <el-input v-model="Register.phone" placeholder="手机号" class="phonenumber"></el-input>
+          <el-input v-model="loginForm.phone" placeholder="手机号" class="phonenumber"></el-input>
         </el-form-item>
         <el-form-item prop="验证码" class="code">
-          <el-input v-model="Register.sendcode" placeholder="手机验证码"></el-input>
+          <el-input v-model="num" placeholder="手机验证码"></el-input>
           <el-button
             type="button"
             @click="sendcode"
@@ -27,7 +27,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm">登录</el-button>
+          <el-button type="primary" @click="submitForm('numberValidateForm')">登录</el-button>
         </el-form-item>
       </el-form>
       <div class="login-tips">
@@ -40,37 +40,47 @@
 
 <script>
 export default {
-  name: "Register",
+  name: "loginForm",
   data() {
     return {
-      Register: {
+      loginForm: {
         phone: "",
         sendcode: ""
       },
       disabled: false,
       time: 0,
-      btntxt: "重新发送"
+      btntxt: "重新发送",
+      nums: "",
+      num: ""
     };
   },
   methods: {
+    getRandonNum() {
+      let res = "";
+      for (let i = 0; i < 6; i++) {
+        let a = parseInt(Math.random() * 10);
+        res += a;
+      }
+      return res;
+    },
     //手机验证发送验证码
     sendcode() {
       const reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
-      if (this.Register.phone == "") {
+      if (this.loginForm.phone == "") {
         this.$message({
           message: "手机号不能为空",
           center: true
         });
         return;
       }
-      if (!reg.test(this.Register.phone)) {
+      if (!reg.test(this.loginForm.phone)) {
         this.$message({
           message: "请输入正确的手机号",
           center: true
         });
         return;
       } else {
-        console.log(this.Register.phone);
+        console.log(this.loginForm.phone);
         this.$message({
           message: "发送成功",
           type: "success",
@@ -79,6 +89,9 @@ export default {
         this.time = 60;
         this.disabled = true;
         this.timer();
+        this.nums = this.getRandonNum();
+        console.log(this.num);
+        console.log(this.nums);
       }
     },
     //60S倒计时
@@ -93,11 +106,22 @@ export default {
         this.disabled = false;
       }
     },
+
     imgjump() {
       this.$router.push("/Home");
     },
     logintipsa() {
       this.$router.push("/loginagument");
+    },
+    submitForm() {
+      if (this.nums === this.num) {
+        // this.$router.push("/loginsucess");
+        console.log("ok");
+      } else {
+        console.log("no");
+        console.log(this.nums);
+        console.log(this.num);
+      }
     }
   }
 };
