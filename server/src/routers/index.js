@@ -2,7 +2,7 @@ const express = require('express');
 
 let Router = express.Router();
 
-// let loginRouter = require('./login');
+let loginRouter = require('./login');
 let goodsRouter = require('./goods');
 let homeRouter = require('./home');
 // let userRouter = require('./user');
@@ -41,6 +41,7 @@ Router.use(express.json(),express.urlencoded({extended:false}));
 
 Router.use('/goods',goodsRouter)
 Router.use('/home',homeRouter)
+Router.use('/login',loginRouter)
 
 
 
