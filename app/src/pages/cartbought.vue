@@ -13,7 +13,6 @@
     </div>
     <!-- <section class="cartcontain">
       <img src="../img/emptyCart.png" class="emptycar" />
-      <p>您还没有添加宝贝,快去看看吧~</p>
     </section>-->
     <section id="footernav">
       <footernav />
@@ -67,19 +66,13 @@ export default {
 }
 .cartcontain {
   margin-top: vw(200);
-  margin-left: vw(60);
-  width: vw(450);
-  height: vw(450);
+  width: vw(600);
+  height: vw(600);
 
   .emptycar {
     width: 100%;
     height: 100%;
     margin-left: vw(70);
-  }
-  p {
-    text-align: center;
-    margin-left: vw(50);
-    font-size: vw(25);
   }
 }
 </style>
