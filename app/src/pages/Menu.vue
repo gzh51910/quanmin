@@ -246,9 +246,64 @@
         </section>
       </section>
     </div>
+    <div class="others">
+      <el-carousel trigger="click">
+        <el-carousel-item v-for="item in oBanner" :key="item.src">
+          <img :src="item.src" alt style="width:100%" />
+        </el-carousel-item>
+      </el-carousel>
+      <div class="othersImgWrap">
+        <nav class="othersTitle">
+          <li>
+            <img src="http://pic.quanmingwang.com/shop/icon/RW0S32WMDs_20180328_!!81820.png" alt="">
+            <span>瓷砖</span>
+          </li>
+          <li>
+            <img src="http://pic.quanmingwang.com/shop/icon/rvuaQNo3Tb_20180328_!!86356.png" alt="">
+            <span>地板</span>
+          </li>
+          <li>
+            <img src="http://pic.quanmingwang.com/shop/icon/Hv2kWCbM9s_20180328_!!65015.png" alt="">
+            <span>壁纸</span>
+          </li>
+          <li>
+            <img src="http://pic.quanmingwang.com/shop/icon/gePNDbQUq2_20180328_!!13389.png" alt="">
+            <span>墙布</span>
+          </li>
+        </nav>
+        <div class="oTitle1">
+          <h2>品质瓷砖</h2>
+          <span>高品质 低价位</span>
+        </div>
+        <div class="otherImg">
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import "../css/base.css";
 export default {
   props: ["num"],
   data() {
@@ -391,7 +446,6 @@ export default {
             "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg"
         }
       ],
-
       lunboList: [
         "http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg",
         "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
@@ -401,6 +455,40 @@ export default {
         "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
         "http://pic1.quanmingwang.com/shop/VLvxasIRbl_20180609_!!60844.jpg",
         "http://pic1.quanmingwang.com/shop/cZlRDl3P3Y_20190212_!!83184.jpg"
+      ],
+      oBanner: [
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/aQYup3btEZ_20180410_!!72540.png"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/xHAaMqQGyO_20180409_!!35090.png"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/AxzTim5wss_20180611_!!40083.jpg"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/MfNzExFxWR_20180409_!!72319.jpg"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/OqAKdhdr95_20180409_!!68227.jpg"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/HYbUtg2hoR_20180409_!!77346.png"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/mcspwPbgtq_20180611_!!72952.jpg"
+        },
+        {
+          src:
+            "http://pic1.quanmingwang.com/shop/0YVPalliyJ_20180611_!!37965.jpg"
+        }
       ]
     };
   },
@@ -449,7 +537,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../css/base.css";
+// @import "../css/base.css";
 @function vw($px) {
   @return ($px / 750) * 100vw;
 }
@@ -718,6 +806,132 @@ html {
       }
       .el-col {
         margin-bottom: vw(18);
+      }
+    }
+  }
+}
+.others {
+  .el-carousel {
+    height: vw(360) !important;
+    .el-carousel__item {
+      height: vw(360) !important;
+    }
+    .el-carousel__button {
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      background-color: #b2b2b2;
+    }
+    .is-active .el-carousel__button {
+      opacity: 0.5;
+    }
+    .el-carousel__container {
+      height: vw(360) !important;
+    }
+  }
+  .othersImgWrap{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+    .othersTitle{
+      width: 100%;
+      height: vw(228);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: vw(25);
+      padding-bottom: vw(15);
+      li{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 25%;
+        img{
+          width: vw(130);
+        }
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+    .oTitle1{
+      width: 100%;
+      height: vw(108);
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: vw(10);
+      h2{
+        display: inline-block;
+        font-weight: 600;
+        font-size: vw(30);
+        color: #323232;
+        position: relative;
+        &:before{
+          content: "";
+          display: inline-block;
+          position: absolute;
+          width: 23px;
+          height: 1px;
+          background: #323232;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          left: -30px;
+        }
+        &:after{
+          content: "";
+          display: inline-block;
+          position: absolute;
+          width: 23px;
+          height: 1px;
+          background: #323232;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          right: -30px;
+        }
+      }
+      span{
+        font-size: vw(22);
+      }
+    }
+    .otherImg{
+      figure{
+        margin-bottom: vw(10);
+        // margin-top: vw(10);
+        img{
+          height: vw(376);
+        }
+        figcaption{
+          p:nth-of-type(1){
+            padding-top: vw(16);
+            padding-left: vw(20);
+            font-size: vw(26);
+            font-weight: bold;
+          }
+          p:nth-of-type(2){
+            padding-top: vw(10);
+            padding-left: vw(70);
+            color: #55afb5;
+            font-size: vw(22);
+            position: relative;
+          }
+          p:nth-of-type(2):before{
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: vw(32);
+            height: vw(32);
+            // top: vw(5);
+            left: vw(20);
+            background: url(http://static.quanmingwang.com/mobile/layouts/img/tuijian.png) no-repeat;
+            background-size: 100%;
+          }
+        }
       }
     }
   }

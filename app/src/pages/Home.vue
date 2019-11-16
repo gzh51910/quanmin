@@ -60,12 +60,12 @@
 </template>
 <script>
 // import axios from "axios";
-import menulist from "./Menu";
+import menulist from "./Menu.vue";
 export default {
   data() {
     return {
-      activeIndex: "1",
-      num: 0,
+      activeIndex: "2",
+      num: 1,
       activeIndex2: "/home",
       menu: [
         {
@@ -129,7 +129,6 @@ export default {
           text: "红木馆"
         }
       ],
-
       footernav: [
         {
           name: "home",
@@ -174,7 +173,6 @@ export default {
     }
   },
   created() {
-    this.activeIndex = this.$route.path;
   },
 
   components: {

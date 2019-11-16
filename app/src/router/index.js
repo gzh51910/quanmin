@@ -79,7 +79,7 @@ const router = new VueRouter({
         },
         {
             name:'menu',
-            path:'/menu/:id',
+            path:'/menu',
             component:Menu
         },
     ]
