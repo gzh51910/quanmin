@@ -14,10 +14,18 @@
     <section class="cartcontain">
       <img src="../img/emptyCart.png" class="emptycar" />
     </section>
+    <section id="footernav">
+      <footernav />
+    </section>
   </div>
 </template>
 <script>
-export default {};
+import footernav from "../pages/footernav.vue";
+export default {
+  components: {
+    footernav
+  }
+};
 </script>
 <style lang="scss">
 @function vw($px) {

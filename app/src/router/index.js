@@ -15,6 +15,7 @@ import Goods from '../pages/Goods.vue';
 import Sort from '../pages/Sort.vue';
 import Hezuo from '../pages/Hezuo';
 import Loginagument from '../pages/loginagument.vue';
+import Loginsucess from '../pages/loginsucess.vue'
 
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
@@ -75,7 +76,13 @@ const router = new VueRouter({
             name: 'loginagument',
             path: '/loginagument',
             component: Loginagument,
-        }
+        },
+        {
+            name: 'loginsucess',
+            path: '/loginsucess',
+            component: Loginsucess,
+        },
+
     ]
 });
 
