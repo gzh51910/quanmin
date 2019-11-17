@@ -18,6 +18,7 @@ import Loginagument from '../pages/loginagument.vue';
 import Loginsucess from '../pages/loginsucess.vue';
 import Menu from '../pages/Menu.vue';
 
+
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history',//hash(默认)
@@ -86,7 +87,7 @@ const router = new VueRouter({
             name: 'menu',
             path: '/menu',
             component: Menu
-        },
+        }
     ]
 });
 

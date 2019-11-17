@@ -64,8 +64,8 @@ import menulist from "./Menu.vue";
 export default {
   data() {
     return {
-      activeIndex: "2",
-      num: 1,
+      activeIndex: "1",
+      num: 0,
       activeIndex2: "/home",
       menu: [
         {
@@ -173,6 +173,7 @@ export default {
     }
   },
   created() {
+    // this.activeIndex = this.$route.num;
   },
 
   components: {
