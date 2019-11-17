@@ -137,7 +137,6 @@ export default {
           width: 55%;
           border-radius: 0;
           background-color: #fafafa;
-          float: left;
           display: inline-block;
         }
         .el-button {
@@ -146,7 +145,6 @@ export default {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
           border-left: 0;
-          float: left;
           display: inline-block;
         }
       }
