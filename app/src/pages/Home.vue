@@ -38,7 +38,7 @@
       </nav>-->
     </header>
     <main>
-      <menulist :showMSg="showMSg" />
+      <menulist :num="num" />
     </main>
     <section id="footernav">
       <footernav />
@@ -216,7 +216,7 @@ export default {
   },
   created() {
     // this.activeIndex = this.$route.num;
-    this.getMenu();
+    // this.getMenu();
   },
 
   components: {

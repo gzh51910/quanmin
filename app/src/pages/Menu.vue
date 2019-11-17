@@ -232,17 +232,17 @@
     </div>
     <div v-show="num!=0" class="others">
       <el-carousel trigger="click">
-        <el-carousel-item v-for="item in showMSg.bannerlunbo" :key="item.index">
-          <img :src="item.imgsrc" alt style="width:100%" />
+        <el-carousel-item v-for="item in oBanner" :key="item.src">
+          <img :src="item.src" alt style="width:100%" />
         </el-carousel-item>
       </el-carousel>
       <div class="othersImgWrap">
         <nav class="othersTitle">
-          <li v-for="item in showMSg.sors" :key="item.index">
-            <img :src="item.imgsrc" alt />
-            <span>{{item.otitle}}</span>
+          <li>
+            <img src="http://pic.quanmingwang.com/shop/icon/RW0S32WMDs_20180328_!!81820.png" alt="">
+            <span>瓷砖</span>
           </li>
-          <!-- <li>
+          <li>
             <img src="http://pic.quanmingwang.com/shop/icon/rvuaQNo3Tb_20180328_!!86356.png" alt="">
             <span>地板</span>
           </li>
@@ -253,22 +253,61 @@
           <li>
             <img src="http://pic.quanmingwang.com/shop/icon/gePNDbQUq2_20180328_!!13389.png" alt="">
             <span>墙布</span>
-          </li>-->
+          </li>
         </nav>
-        <div class="listWrap" v-for="(item,idx) in showMSg.list" :key="idx">
-          <div class="oTitle1">
-            <h2>{{showMSg.list.otitle}}</h2>
-            <span>高品质 低价位</span>
-          </div>
-          <div class="otherImg">
-            <figure v-for="(msg,idx) in showMSg.list.goodslist" :key="idx">
-              <img :src="showMSg.list.goodslist.imgsrc" alt />
-              <figcaption>
-                <p>{{showMSg.list.goodslist.mtitle}}</p>
-                <p>{{showMSg.list.goodslist.pay}}</p>
-              </figcaption>
-            </figure>
-          </div>
+        <div class="oTitle1">
+          <h2>品质瓷砖</h2>
+          <span>高品质 低价位</span>
+        </div>
+        <div class="otherImg">
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/tR5OeEZZTZ_20180611_!!85926.圣拉斐陶瓷" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/Raq1MEXkZd_20190118_!!39893.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="oTitle1">
+          <h2>品质瓷砖</h2>
+          <span>高品质 低价位</span>
+        </div>
+        <div class="otherImg">
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/98aDAuSlmM_20180611_!!31053.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/q0a9LU7TSx_20180410_!!26747.贝尔木地板" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="http://pic1.quanmingwang.com/shop/MJdbeynUnl_20180611_!!25776.jpg" alt="">
+            <figcaption>
+              <p>精工品质 全球信赖</p>
+              <p>品质生活美学 匠于心 精于艺</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -278,7 +317,7 @@
 import "../css/base.css";
 // import {local} from '../Api'
 export default {
-  props: ["showMSg"],
+  props: ["num"],
 
   data() {
     return {
@@ -286,7 +325,6 @@ export default {
       activeIndex3: "1",
       mark: 0,
       index: "1",
-      num: 1,
       lunboShow: {
         // transform: translateX(0)
         left: 0
@@ -818,6 +856,10 @@ html {
   }
 }
 .others {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  flex: 1;
   .el-carousel {
     height: vw(360) !important;
     .el-carousel__item {
