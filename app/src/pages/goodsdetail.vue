@@ -8,6 +8,7 @@
       <img src="../img/more.png" alt />
     </div>
     <div class="lunbo">
+      <!-- 轮播图 -->
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="item in 3" :key="item">
           <h3>{{ item }}</h3>
@@ -16,6 +17,7 @@
       <div>
         <img src="../img/platform-service.png" alt />
       </div>
+      <!-- 产品参数 -->
       <div>
         <p>厨卫瓷砖</p>
         <p>
@@ -23,6 +25,20 @@
           <span>产品平台编号：3000</span>
         </p>
       </div>
+      <el-button-group>
+        <el-button type="danger" icon="el-icon-shopping-cart-2" @click="add2cart">加入购物车</el-button>
+      </el-button-group>
+      <h3>推荐列表</h3>
+      <el-row :gutter="20">
+        <el-col>
+          <img />
+          <h4></h4>
+          <p class="price">
+            <del></del>
+            <span></span>
+          </p>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>

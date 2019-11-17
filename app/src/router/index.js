@@ -20,7 +20,7 @@ import Menu from '../pages/Menu.vue';
 import Goodsdetail from '../pages/goodsdetail.vue'
 import Shopfail from '../pages/shopfail.vue';
 import Shopsucess from '../pages/shopsucess.vue';
-import Cartbought from '../pages/cartbought.vue';
+
 
 
 
@@ -107,11 +107,7 @@ const router = new VueRouter({
             path: '/shopsucess',
             component: Shopsucess,
         },
-        {
-            name: 'cartbought',
-            path: '/cartbought',
-            component: Cartbought,
-        },
+
     ]
 });
 

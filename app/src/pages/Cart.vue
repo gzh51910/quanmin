@@ -49,9 +49,9 @@
         </el-col>
       </el-row>
     </div>
-
     <!-- <section class="cartcontain">
       <img src="../img/emptyCart.png" class="emptycar" />
+      <p>您还没有添加宝贝,快去看看吧~</p>
     </section>-->
     <section id="footernav">
       <footernav />
