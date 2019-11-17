@@ -209,6 +209,7 @@
         </section>
       </section>
     </div>
+    {{num}}
     <div v-show="num!=0" class="others">
       <el-carousel trigger="click">
         <el-carousel-item v-for="item in oBanner" :key="item.src">
@@ -270,11 +271,13 @@ import "../css/base.css";
 // import {local} from '../Api'
 export default {
   props: ["num"],
+  
   data() {
     return {
       imgString:"http://localhost:1910/img/",
       activeIndex3: "1",
       mark: 0,
+      index:"1",
       lunboShow: {
         // transform: translateX(0)
         left: 0
@@ -371,6 +374,12 @@ export default {
       ]
     };
   },
+  watch:{
+    num:val=>{
+      // console.log("新："+newVal+"旧："+oldVal);
+      console.log("num"+this.num);
+    }
+  },
   methods: {
     autPlay() {
       this.mark++;
@@ -461,22 +470,27 @@ export default {
    async created() {
     //  推荐页
     this.play();
-    let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
-    let m = data[0].mainbanner;    //轮播图
-    let t = data[0].ten_class;    //选择
-    let d = data[0].todayRecommended;
-    let n = data[0].newshoppinp;
-    let e = data[0].equipped;
-    let h = data[0].hotBanner;
-    let s = data[0].style;
-    this.getImgSrc(m,"mainbanner");
-    this.getImgSrc(t,"ten_class");
-    this.getImgSrc(d,"todayRecommended");
-    this.getImgSrc(n,"newshoppinp");
-    this.getImgSrc(e,"equipped");
-    this.getImgSrc(h,"hotBanner");
-    this.getImgSrc(s,"style");
-    // let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
+
+      let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
+      let m = data[0].mainbanner;    //轮播图
+      let t = data[0].ten_class;    //选择
+      let d = data[0].todayRecommended;
+      let n = data[0].newshoppinp;
+      let e = data[0].equipped;
+      let h = data[0].hotBanner;
+      let s = data[0].style;
+      this.getImgSrc(m,"mainbanner");
+      this.getImgSrc(t,"ten_class");
+      this.getImgSrc(d,"todayRecommended");
+      this.getImgSrc(n,"newshoppinp");
+      this.getImgSrc(e,"equipped");
+      this.getImgSrc(h,"hotBanner");
+      this.getImgSrc(s,"style");
+    
+    
+    // let {data:{data2:data}} = await this.$axios.get("http://localhost:1910/fenye?index:1");
+    // console.log(data2);
+
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
