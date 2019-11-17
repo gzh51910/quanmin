@@ -24,6 +24,7 @@ import Cartbought from '../pages/cartbought.vue';
 
 
 
+
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history',//hash(默认)
@@ -111,7 +112,7 @@ const router = new VueRouter({
             name: 'cartbought',
             path: '/cartbought',
             component: Cartbought,
-        },
+        }
     ]
 });
 
