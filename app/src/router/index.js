@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../pages/Home.vue';
-import Reg from '../pages/Reg.vue';
+// import Reg from '../pages/Reg.vue';
 import Login from '../pages/Login.vue';
 import Mine from '../pages/Mine.vue';
 import Cart from '../pages/Cart.vue';
@@ -35,11 +35,11 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
-        {
-            name: 'reg',
-            path: '/reg',
-            component: Reg
-        },
+        // {
+        //     name: 'reg',
+        //     path: '/reg',
+        //     component: Reg
+        // },
         {
             name: 'login',
             path: '/login',
@@ -111,12 +111,12 @@ const router = new VueRouter({
             component: Shopsucess,
         },
 
-        {
-            name: 'cartbought',
-            path: '/cartbought',
-            component: Cartbought,
-            meta: { requiresAuth: true }
-        }
+        // {
+        //     name: 'cartbought',
+        //     path: '/cartbought',
+        //     component: Cartbought,
+        //     meta: { requiresAuth: true }
+        // }
 
     ]
 });

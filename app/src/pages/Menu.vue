@@ -32,13 +32,25 @@
           <div class="rMainRight">
             <nav class="rnavlist">
               <li>
-                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicTop.imgsrc" alt />
+                <img
+                  v-if="todayRecommended.title.imgsrc"
+                  :src="todayRecommended.rightPicTop.imgsrc"
+                  alt
+                />
               </li>
               <li>
-                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicDown[0].imgsrc" alt />
+                <img
+                  v-if="todayRecommended.title.imgsrc"
+                  :src="todayRecommended.rightPicDown[0].imgsrc"
+                  alt
+                />
               </li>
               <li>
-                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicDown[1].imgsrc" alt />
+                <img
+                  v-if="todayRecommended.title.imgsrc"
+                  :src="todayRecommended.rightPicDown[1].imgsrc"
+                  alt
+                />
               </li>
             </nav>
           </div>
@@ -79,7 +91,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -92,7 +106,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.America.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -105,7 +121,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -134,7 +152,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -147,7 +167,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.America.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -160,7 +182,9 @@
         </div>
         <div class="equippedWrap">
           <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
-            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <div class="equippedImg">
+              <img :src="o.imgsrc" />
+            </div>
             <figcaption>
               <span>{{o.title}}</span>
               <p class="nav4desc">{{o.desc}}</p>
@@ -192,10 +216,7 @@
           <el-row>
             <el-col :span="24" v-for="(item,idx) in style" :key="idx" :offset="0">
               <el-card :body-style="{ padding: '14px'}">
-                <img
-                  :src="item.imgsrc"
-                  class="image"
-                />
+                <img :src="item.imgsrc" class="image" />
                 <div class="menu2LiDesc">
                   <span>{{item.title}}</span>
                   <span>
@@ -209,20 +230,19 @@
         </section>
       </section>
     </div>
-    {{num}}
     <div v-show="num!=0" class="others">
       <el-carousel trigger="click">
-        <el-carousel-item v-for="item in oBanner" :key="item.src">
-          <img :src="item.src" alt style="width:100%" />
+        <el-carousel-item v-for="item in showMSg.bannerlunbo" :key="item.index">
+          <img :src="item.imgsrc" alt style="width:100%" />
         </el-carousel-item>
       </el-carousel>
       <div class="othersImgWrap">
         <nav class="othersTitle">
-          <li>
-            <img src="http://pic.quanmingwang.com/shop/icon/RW0S32WMDs_20180328_!!81820.png" alt="">
-            <span>瓷砖</span>
+          <li v-for="item in showMSg.sors" :key="item.index">
+            <img :src="item.imgsrc" alt />
+            <span>{{item.otitle}}</span>
           </li>
-          <li>
+          <!-- <li>
             <img src="http://pic.quanmingwang.com/shop/icon/rvuaQNo3Tb_20180328_!!86356.png" alt="">
             <span>地板</span>
           </li>
@@ -233,34 +253,22 @@
           <li>
             <img src="http://pic.quanmingwang.com/shop/icon/gePNDbQUq2_20180328_!!13389.png" alt="">
             <span>墙布</span>
-          </li>
+          </li>-->
         </nav>
-        <div class="oTitle1">
-          <h2>品质瓷砖</h2>
-          <span>高品质 低价位</span>
-        </div>
-        <div class="otherImg">
-          <figure>
-            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
-            <figcaption>
-              <p>精工品质 全球信赖</p>
-              <p>品质生活美学 匠于心 精于艺</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
-            <figcaption>
-              <p>精工品质 全球信赖</p>
-              <p>品质生活美学 匠于心 精于艺</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <img src="http://pic1.quanmingwang.com/shop/Zp84DJj6ib_20180611_!!74077.jpg" alt="">
-            <figcaption>
-              <p>精工品质 全球信赖</p>
-              <p>品质生活美学 匠于心 精于艺</p>
-            </figcaption>
-          </figure>
+        <div class="listWrap" v-for="(item,idx) in showMSg.list" :key="idx">
+          <div class="oTitle1">
+            <h2>{{showMSg.list.otitle}}</h2>
+            <span>高品质 低价位</span>
+          </div>
+          <div class="otherImg">
+            <figure v-for="(msg,idx) in showMSg.list.goodslist" :key="idx">
+              <img :src="showMSg.list.goodslist.imgsrc" alt />
+              <figcaption>
+                <p>{{showMSg.list.goodslist.mtitle}}</p>
+                <p>{{showMSg.list.goodslist.pay}}</p>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
@@ -270,14 +278,15 @@
 import "../css/base.css";
 // import {local} from '../Api'
 export default {
-  props: ["num"],
-  
+  props: ["showMSg"],
+
   data() {
     return {
-      imgString:"http://localhost:1910/img/",
+      imgString: "http://localhost:1910/img/",
       activeIndex3: "1",
       mark: 0,
-      index:"1",
+      index: "1",
+      num: 1,
       lunboShow: {
         // transform: translateX(0)
         left: 0
@@ -286,9 +295,10 @@ export default {
         position: "relative",
         top: 0
       },
-      mainbanner:[],        //轮播图
-      ten_class:[],         //选择
-      navlist2: [         //瓷砖
+      mainbanner: [], //轮播图
+      ten_class: [], //选择
+      navlist2: [
+        //瓷砖
         {
           src:
             "http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg"
@@ -314,11 +324,11 @@ export default {
             "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg"
         }
       ],
-      todayRecommended:{},  //今日推荐
-      newshoppinp:{},     //今日上市
-      equipped:{},        //美家整装
-      hotBanner:[],       //热卖单品轮播图
-      style:[],           //楼层style
+      todayRecommended: {}, //今日推荐
+      newshoppinp: {}, //今日上市
+      equipped: {}, //美家整装
+      hotBanner: [], //热卖单品轮播图
+      style: [], //楼层style
 
       menu2: [
         {
@@ -374,11 +384,12 @@ export default {
       ]
     };
   },
-  watch:{
-    num:val=>{
-      // console.log("新："+newVal+"旧："+oldVal);
-      console.log("num"+this.num);
-    }
+  watch: {
+    // num:(newVal,oldVal)=>{
+    // console.log("新："+newVal+"旧："+oldVal);
+    // let {data:{data}} = this.$axios.get("http://localhost:1910/fenye?index=1");
+    // console.log("数据"+data);
+    // }
   },
   methods: {
     autPlay() {
@@ -415,81 +426,79 @@ export default {
         this.menu2Style.top = "0";
       }
     },
-    getImgSrc(o,name){
-      if(name=="todayRecommended"||name=="newshoppinp"){
-        for(let key in o){
-          if(key=="rightPicDown"){
-            for(let idx in o[key]){
-              o[key][idx].imgsrc=this.imgString+o[key][idx].imgsrc;
+    getImgSrc(o, name) {
+      if (name == "todayRecommended" || name == "newshoppinp") {
+        for (let key in o) {
+          if (key == "rightPicDown") {
+            for (let idx in o[key]) {
+              o[key][idx].imgsrc = this.imgString + o[key][idx].imgsrc;
             }
-          }else{
-            o[key].imgsrc=this.imgString+o[key].imgsrc;
+          } else {
+            o[key].imgsrc = this.imgString + o[key].imgsrc;
           }
         }
-      }
-      else if(name=="equipped"){
-        for(let key in o){
-          if(key=="titleSrc"){
-            o[key]=this.imgString+o[key];
-          }else{
-            for(let i in o[key]){
-              if(i=="title"){
-                o[key][i].imgsrc = this.imgString+o[key][i].imgsrc;
-              }else{
-                for(let m in o[key][i]){
-                  o[key][i][m].imgsrc = this.imgString+o[key][i][m].imgsrc;
+      } else if (name == "equipped") {
+        for (let key in o) {
+          if (key == "titleSrc") {
+            o[key] = this.imgString + o[key];
+          } else {
+            for (let i in o[key]) {
+              if (i == "title") {
+                o[key][i].imgsrc = this.imgString + o[key][i].imgsrc;
+              } else {
+                for (let m in o[key][i]) {
+                  o[key][i][m].imgsrc = this.imgString + o[key][i][m].imgsrc;
                 }
               }
             }
           }
         }
-      }
-      else{
-        for(let key in o){
-          o[key].imgsrc=this.imgString+o[key].imgsrc;
+      } else {
+        for (let key in o) {
+          o[key].imgsrc = this.imgString + o[key].imgsrc;
         }
       }
-      
-      if(name=="mainbanner"){
-        this.mainbanner=o;
-      }else if(name=="ten_class"){
-        this.ten_class=o;
-      }else if(name=="todayRecommended"){
-        this.todayRecommended=o;
-      }else if(name=="newshoppinp"){
-        this.newshoppinp=o;
-      }else if(name=="equipped"){
-        this.equipped=o;
-      }else if(name=="hotBanner"){
-        this.hotBanner=o;
-      }else if(name=="style"){
-        this.style=o;
+
+      if (name == "mainbanner") {
+        this.mainbanner = o;
+      } else if (name == "ten_class") {
+        this.ten_class = o;
+      } else if (name == "todayRecommended") {
+        this.todayRecommended = o;
+      } else if (name == "newshoppinp") {
+        this.newshoppinp = o;
+      } else if (name == "equipped") {
+        this.equipped = o;
+      } else if (name == "hotBanner") {
+        this.hotBanner = o;
+      } else if (name == "style") {
+        this.style = o;
       }
     }
   },
-   async created() {
+  async created() {
     //  推荐页
     this.play();
-      let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
-      let m = data[0].mainbanner;    //轮播图
-      let t = data[0].ten_class;    //选择
-      let d = data[0].todayRecommended;
-      let n = data[0].newshoppinp;
-      let e = data[0].equipped;
-      let h = data[0].hotBanner;
-      let s = data[0].style;
-      this.getImgSrc(m,"mainbanner");
-      this.getImgSrc(t,"ten_class");
-      this.getImgSrc(d,"todayRecommended");
-      this.getImgSrc(n,"newshoppinp");
-      this.getImgSrc(e,"equipped");
-      this.getImgSrc(h,"hotBanner");
-      this.getImgSrc(s,"style");
-    
-    
+    let {
+      data: { data }
+    } = await this.$axios.get("http://localhost:1910/home");
+    let m = data[0].mainbanner; //轮播图
+    let t = data[0].ten_class; //选择
+    let d = data[0].todayRecommended;
+    let n = data[0].newshoppinp;
+    let e = data[0].equipped;
+    let h = data[0].hotBanner;
+    let s = data[0].style;
+    this.getImgSrc(m, "mainbanner");
+    this.getImgSrc(t, "ten_class");
+    this.getImgSrc(d, "todayRecommended");
+    this.getImgSrc(n, "newshoppinp");
+    this.getImgSrc(e, "equipped");
+    this.getImgSrc(h, "hotBanner");
+    this.getImgSrc(s, "style");
+
     // let {data:{data2:data}} = await this.$axios.get("http://localhost:1910/fenye?index:1");
     // console.log(data2);
-    
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
@@ -652,25 +661,25 @@ html {
       width: 100%;
       height: vw(50);
     }
-    .equippedWrap{
+    .equippedWrap {
       width: 100%;
       margin-top: vw(18);
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      figure{
+      figure {
         width: vw(348);
         height: vw(320);
         margin-bottom: vw(18);
-        .equippedImg{
+        .equippedImg {
           width: 100%;
           height: vw(228);
         }
-        figcaption{
+        figcaption {
           span {
-            display: block!important;
-            width: vw(312)!important;
+            display: block !important;
+            width: vw(312) !important;
             font-size: 14px;
             color: #e8ac44;
             overflow: hidden;
@@ -678,7 +687,7 @@ html {
             white-space: nowrap;
             margin-bottom: vw(10);
           }
-          p{
+          p {
             display: block;
             font-size: 12px;
             overflow: hidden;
@@ -690,10 +699,10 @@ html {
       }
     }
 
-    .el-col{
-      width: vw(348)!important;
-      height: vw(320)!important;
-      margin-bottom: vw(18)!important;
+    .el-col {
+      width: vw(348) !important;
+      height: vw(320) !important;
+      margin-bottom: vw(18) !important;
     }
     .el-card {
       width: vw(348.5);
@@ -701,8 +710,8 @@ html {
     }
     .el-card__body {
       span {
-        display: block!important;
-        width: vw(312)!important;
+        display: block !important;
+        width: vw(312) !important;
         font-size: 14px;
         color: #e8ac44;
         overflow: hidden;
@@ -827,11 +836,11 @@ html {
       height: vw(360) !important;
     }
   }
-  .othersImgWrap{
+  .othersImgWrap {
     width: 100%;
     height: 100%;
     background-color: #f2f2f2;
-    .othersTitle{
+    .othersTitle {
       width: 100%;
       height: vw(228);
       display: flex;
@@ -839,21 +848,21 @@ html {
       align-items: center;
       padding-top: vw(25);
       padding-bottom: vw(15);
-      li{
+      li {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         width: 25%;
-        img{
+        img {
           width: vw(130);
         }
-        span{
+        span {
           font-size: 14px;
         }
       }
     }
-    .oTitle1{
+    .oTitle1 {
       width: 100%;
       height: vw(108);
       background-color: #fff;
@@ -862,13 +871,13 @@ html {
       justify-content: space-around;
       align-items: center;
       margin-bottom: vw(10);
-      h2{
+      h2 {
         display: inline-block;
         font-weight: 600;
         font-size: vw(30);
         color: #323232;
         position: relative;
-        &:before{
+        &:before {
           content: "";
           display: inline-block;
           position: absolute;
@@ -880,7 +889,7 @@ html {
           margin: auto;
           left: -30px;
         }
-        &:after{
+        &:after {
           content: "";
           display: inline-block;
           position: absolute;
@@ -893,32 +902,32 @@ html {
           right: -30px;
         }
       }
-      span{
+      span {
         font-size: vw(22);
       }
     }
-    .otherImg{
-      figure{
+    .otherImg {
+      figure {
         margin-bottom: vw(10);
         // margin-top: vw(10);
-        img{
+        img {
           height: vw(376);
         }
-        figcaption{
-          p:nth-of-type(1){
+        figcaption {
+          p:nth-of-type(1) {
             padding-top: vw(16);
             padding-left: vw(20);
             font-size: vw(26);
             font-weight: bold;
           }
-          p:nth-of-type(2){
+          p:nth-of-type(2) {
             padding-top: vw(10);
             padding-left: vw(70);
             color: #55afb5;
             font-size: vw(22);
             position: relative;
           }
-          p:nth-of-type(2):before{
+          p:nth-of-type(2):before {
             content: "";
             display: inline-block;
             position: absolute;
@@ -926,7 +935,8 @@ html {
             height: vw(32);
             // top: vw(5);
             left: vw(20);
-            background: url(http://static.quanmingwang.com/mobile/layouts/img/tuijian.png) no-repeat;
+            background: url(http://static.quanmingwang.com/mobile/layouts/img/tuijian.png)
+              no-repeat;
             background-size: 100%;
           }
         }

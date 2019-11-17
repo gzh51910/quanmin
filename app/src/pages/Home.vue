@@ -38,7 +38,7 @@
       </nav>-->
     </header>
     <main>
-      <menulist :num="num" />
+      <menulist :showMSg="showMSg" />
     </main>
     <section id="footernav">
       <footernav />
@@ -70,6 +70,8 @@ export default {
     return {
       activeIndex: "2",
       num: 1,
+      showMSg:[],
+      imgString:"http://localhost:1910/img/",
       // activeIndex2: "/home",
       menu: [
         {
@@ -174,10 +176,47 @@ export default {
 
     getNum(idx) {
       this.num = idx;
+      // if(this.num!=0){
+      //   let {data:{data}} = await this.$axios.get("http://localhost:1910/home/fenye?index=1");
+      //   console.log("数据："+data);
+      // }
+      console.log("num"+this.num);
+    },
+    getimgSrc(o,name){
+      if(name=="list"){
+        for(let i in o){
+          for(let j in o[i].goodslist){
+            o[i].goodslist[j].imgsrc=this.imgString+o[i].goodslist[j].imgsrc;
+          }
+        }
+      }else{
+        for(let key in o){
+          o[key].imgsrc=this.imgString+o[key].imgsrc;
+        }
+      }
+      
+      if(name=="bannerlunbo"){
+        this.showMSg.bannerlunbo=o;
+      }else if(name=="sors"){
+        this.showMSg.sors=o;
+      }else if(name=="list"){
+        this.showMSg.list=o;
+      }
+    },
+    async getMenu(){
+      let {data:{data}} = await this.$axios.get("http://localhost:1910/home/fenye?index=1");
+      this.showMSg=data[0];
+      this.getimgSrc(this.showMSg.bannerlunbo,"bannerlunbo");
+      this.getimgSrc(this.showMSg.sors,"sors");
+      this.getimgSrc(this.showMSg.list,"list");
+      // console.log("数据："+this.showMSg);
+      console.log(this.showMSg);
+      
     }
   },
   created() {
     // this.activeIndex = this.$route.num;
+    this.getMenu();
   },
 
   components: {
