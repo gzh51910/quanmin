@@ -68,9 +68,9 @@ import footernav from "../pages/footernav.vue";
 export default {
   data() {
     return {
-      activeIndex: "1",
-      num: 0,
-      activeIndex2: "/home",
+      activeIndex: "2",
+      num: 1,
+      // activeIndex2: "/home",
       menu: [
         {
           name: "1",
