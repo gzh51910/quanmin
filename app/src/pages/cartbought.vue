@@ -16,12 +16,10 @@
     <div class="page-cart">
       <div v-for="item in goodslist" :key="item.id">
         <el-row :gutter="30">
-          <!-- <el-radio v-model="radio" label="1">备选项</el-radio> -->
           <el-col :span="4">
-            <el-radio v-model="radio" label="1">备选项</el-radio>
             <img :src="item.imgurl" />
           </el-col>
-          <el-col :span="16">
+          <el-col :span="16" class="jisuan">
             <h4>{{item.name}}</h4>
             <p class="price">
               <span>{{item.price}}</span>
@@ -147,12 +145,27 @@ export default {
   }
 }
 .page-cart {
+  margin-left: vw(20);
+  width: vw(700);
   margin-top: vw(40);
   img {
-    width: 100%;
+    width: vw(140);
+    height: vw(140);
+    // width: 100%;
   }
-  h4 {
-    margin-top: 0;
+
+  .jisuan {
+    width: vw(400);
+    margin-left: vw(60);
+    h4 {
+      margin-top: 0;
+    }
   }
 }
 </style>
+  <!-- 购物列表 -->
+
+    <!-- <section class="cartcontain">
+      <img src="../img/emptyCart.png" class="emptycar" />
+      <p>您还没有添加宝贝,快去看看吧~</p>
+    </section>-->

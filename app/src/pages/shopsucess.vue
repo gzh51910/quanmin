@@ -64,6 +64,7 @@ export default {
         }
       ],
       list2: [],
+
       imgstring: "http://localhost:1910/img/"
     };
   },
@@ -74,18 +75,18 @@ export default {
   async created() {
     let {
       data: { data }
-    } = await this.$axios.get("http://localhost:1910/goods");
+    } = await this.$axios.get("http://localhost:1910/home");
     let m = data.mainbanner;
-    this.getImg(m);
-    console.log(data);
+    // this.getImg(m);
+    // console.log(data);
   },
   methods: {
-    getImg(o) {
-      for (let key in o) {
-        o[key].imgsrc = this.imgstring + o[key].imgsrc;
-      }
-      this.list2 = o;
-    }
+    // getImg(o) {
+    //   for (let key in o) {
+    //     o[key].imgsrc = this.imgstring + o[key].imgsrc;
+    //   }
+    //   this.list2 = o;
+    // }
   }
 };
 </script>
@@ -94,6 +95,7 @@ export default {
   @return ($px / 750) * 100vw;
 }
 #ss {
+  margin-left: vw(30);
   width: 100%;
   .title {
     font-size: vw(10);
