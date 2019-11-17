@@ -10,7 +10,7 @@ import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
 import Mine from '../pages/Mine.vue';
 import Cart from '../pages/Cart.vue';
-import List from '../pages/List.vue';
+// import List from '../pages/List.vue';
 import Goods from '../pages/Goods.vue';
 import Sort from '../pages/Sort.vue';
 import Hezuo from '../pages/Hezuo';
@@ -35,11 +35,6 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
-        // {
-        //     name: 'reg',
-        //     path: '/reg',
-        //     component: Reg
-        // },
         {
             name: 'login',
             path: '/login',
@@ -57,11 +52,7 @@ const router = new VueRouter({
             path: '/cart',
             component: Cart
         },
-        {
-            name: 'list',
-            path: '/list',
-            component: List
-        },
+
         {
             name: 'goods',
             path: '/goods',
@@ -111,12 +102,15 @@ const router = new VueRouter({
             component: Shopsucess,
         },
 
+<<<<<<< HEAD
         // {
         //     name: 'cartbought',
         //     path: '/cartbought',
         //     component: Cartbought,
         //     meta: { requiresAuth: true }
         // }
+=======
+>>>>>>> af5427ca128fc82af1b99d2e88a335a0a207ba3e
 
     ]
 });

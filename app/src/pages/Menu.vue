@@ -517,26 +517,22 @@ export default {
   async created() {
     //  推荐页
     this.play();
-    let {
-      data: { data }
-    } = await this.$axios.get("http://localhost:1910/home");
-    let m = data[0].mainbanner; //轮播图
-    let t = data[0].ten_class; //选择
+    let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
+    let m = data[0].mainbanner;    //轮播图
+    let t = data[0].ten_class;    //选择
     let d = data[0].todayRecommended;
     let n = data[0].newshoppinp;
     let e = data[0].equipped;
     let h = data[0].hotBanner;
     let s = data[0].style;
-    this.getImgSrc(m, "mainbanner");
-    this.getImgSrc(t, "ten_class");
-    this.getImgSrc(d, "todayRecommended");
-    this.getImgSrc(n, "newshoppinp");
-    this.getImgSrc(e, "equipped");
-    this.getImgSrc(h, "hotBanner");
-    this.getImgSrc(s, "style");
-
-    // let {data:{data2:data}} = await this.$axios.get("http://localhost:1910/fenye?index:1");
-    // console.log(data2);
+    this.getImgSrc(m,"mainbanner");
+    this.getImgSrc(t,"ten_class");
+    this.getImgSrc(d,"todayRecommended");
+    this.getImgSrc(n,"newshoppinp");
+    this.getImgSrc(e,"equipped");
+    this.getImgSrc(h,"hotBanner");
+    this.getImgSrc(s,"style");
+    
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
