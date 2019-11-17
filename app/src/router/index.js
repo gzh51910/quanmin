@@ -24,6 +24,7 @@ import Shopsucess from '../pages/shopsucess.vue';
 
 
 
+
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history',//hash(默认)
@@ -47,7 +48,9 @@ const router = new VueRouter({
         {
             name: 'mine',
             path: '/mine',
-            component: Mine
+            component: Mine,
+            meta: { requiresAuth: true }
+
         },
         {
             name: 'cart',
@@ -108,8 +111,60 @@ const router = new VueRouter({
             component: Shopsucess,
         },
 
+        {
+            name: 'cartbought',
+            path: '/cartbought',
+            component: Cartbought,
+            meta: { requiresAuth: true }
+        }
+
     ]
 });
 
+// 全局路由守卫
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth) {
+        // 获取token
+        // let Authorization = localStorage.getItem('Authorization');
+        let $store = router.app.$store
+        let Authorization = $store.state.common.user.Authorization;
+        console.log(Authorization);
+
+        if (Authorization) {
+            // 登录则放行
+            next();
+
+            // 发送校验请求
+            router.app.$axios.get('http://localhost:1910/verify', {
+                headers: {
+                    Authorization
+                }
+            }).then(({ data }) => {
+                console.log('校验结果：', data)
+                if (data.status === 0) {
+                    $store.commit('logout');
+                    next({
+                        path: '/login',
+                        query: {
+                            redirectUrl: to.fullPath
+                        }
+                    })
+                }
+            })
+        } else {
+            // 否则跳到登录页面
+            // router.push('/login')
+            next({
+                path: '/login',
+                query: {
+                    redirectUrl: to.fullPath
+                }
+            })
+        }
+    } else {
+        next();
+    }
+    console.log('全局.beforeEach');
+})
 //4.导出Router实例，把router实例注入到vue实例中
 export default router;

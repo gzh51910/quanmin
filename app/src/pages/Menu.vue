@@ -3,15 +3,16 @@
     <div v-show="num==0" class="Recommend">
       <section class="bannerWrap">
         <el-carousel trigger="click">
-          <el-carousel-item v-for="item in banner" :key="item.src">
-            <img :src="item.src" alt style="width:100%" />
+          <el-carousel-item v-for="item in mainbanner" :key="item.index">
+            <img :src="item.imgsrc" alt style="width:100%" />
           </el-carousel-item>
         </el-carousel>
       </section>
+      <!-- 选择 -->
       <nav class="navlist1">
-        <li v-for="item in navlist1" :key="item.name">
-          <img :src="item.src" alt />
-          {{item.name}}
+        <li v-for="item in ten_class" :key="item.index">
+          <img :src="item.imgsrc" alt />
+          {{item.title}}
         </li>
       </nav>
       <nav class="navlist2">
@@ -19,122 +20,104 @@
           <img :src="item.src" alt />
         </li>
       </nav>
+      <!-- 今日推荐 -->
       <section class="navlist3">
         <div class="rTitle">
-          <img src="http://pic1.quanmingwang.com/t/t_L6q2pDbELU_62324.jpg" alt />
+          <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.title.imgsrc" alt />
         </div>
         <div class="rMain">
           <div class="rMainLeft">
-            <img src="http://pic1.quanmingwang.com/shop/fpO6GPgs9a_20190118_!!96139.jpg" alt />
+            <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.leftPIc.imgsrc" alt />
           </div>
           <div class="rMainRight">
             <nav class="rnavlist">
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/Z3F2RM5LWZ_20180416_!!13036.jpg" alt />
+                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicTop.imgsrc" alt />
               </li>
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/VsLFQRgbmf_20180608_!!25108.jpg" alt />
+                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicDown[0].imgsrc" alt />
               </li>
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/MuF4Csag5M_20180416_!!84842.jpg" alt />
+                <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.rightPicDown[1].imgsrc" alt />
               </li>
             </nav>
           </div>
         </div>
       </section>
+      <!-- 新品上市 -->
       <section class="navlist3">
         <div class="rTitle">
-          <img src="http://pic1.quanmingwang.com/t/t_Nb7ikU86VU_38987.jpg" alt />
+          <img :src="newshoppinp.title.imgsrc" alt />
         </div>
         <div class="rMain">
           <div class="rMainLeft">
-            <img src="http://pic1.quanmingwang.com/shop/kumEif3dzX_20190118_!!36415.jpg" alt />
+            <img :src="newshoppinp.leftPIc.imgsrc" alt />
           </div>
           <div class="rMainRight">
             <nav class="rnavlist">
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/eDf0gwFPGN_20180608_!!97384.jpg" alt />
+                <img :src="newshoppinp.rightPicTop.imgsrc" alt />
               </li>
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/27HgQeFemr_20180416_!!50930.jpg" alt />
+                <img :src="newshoppinp.rightPicDown[0].imgsrc" alt />
               </li>
               <li>
-                <img src="http://pic1.quanmingwang.com/shop/ZdEluvTCnH_20180416_!!67407.jpg" alt />
+                <img :src="newshoppinp.rightPicDown[1].imgsrc" alt />
               </li>
             </nav>
           </div>
         </div>
       </section>
+      <!-- 美家整装 -->
       <section class="navlist4">
         <div class="nav4title1">
-          <img src="http://pic1.quanmingwang.com/t/t_cSyhaBkGJ9_85689.png" alt />
+          <img :src="equipped.titleSrc" alt />
         </div>
         <!-- 新中式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/1evY6TQGQB_20190126_!!43996.jpg" alt />
+          <img :src="equipped.Chinese.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
         <!-- 美式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/t1h6Ru7qSa_20190126_!!97159.jpg" alt />
+          <img :src="equipped.America.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.America.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
         <!-- 欧式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/KED5KQsg4H_20190126_!!87034.jpg" alt />
+          <img :src="equipped.Europe.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
         <!-- 热卖单品 -->
         <div class="hotgoods">
           <div class="lunbo">
             <div class="lunboImgWrap" :style="lunboShow">
-              <div class="lunboImg" v-for="(item,index) in lunboList" :key="index">
-                <img :src="item" alt />
+              <div class="lunboImg" v-for="item in hotBanner" :key="item.index">
+                <img :src="item.imgsrc" alt />
                 <!-- <img src="http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg" alt /> -->
               </div>
             </div>
@@ -143,69 +126,49 @@
       </section>
       <section class="navlist4">
         <div class="nav4title1">
-          <img src="http://pic1.quanmingwang.com/t/t_cSyhaBkGJ9_85689.png" alt />
+          <img :src="equipped.titleSrc" alt />
         </div>
         <!-- 新中式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/1evY6TQGQB_20190126_!!43996.jpg" alt />
+          <img :src="equipped.Chinese.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
         <!-- 美式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/t1h6Ru7qSa_20190126_!!97159.jpg" alt />
+          <img :src="equipped.America.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.America.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
         <!-- 欧式 -->
         <div class="nav4title2">
-          <img src="http://pic1.quanmingwang.com/shop/KED5KQsg4H_20190126_!!87034.jpg" alt />
+          <img :src="equipped.Europe.title.imgsrc" alt />
         </div>
-        <el-row>
-          <el-col :span="12" v-for="o in 4" :key="o" :offset="0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="http://pic1.quanmingwang.com/vr/vr_AWo98wLahs_20180920_!!70733.jpg"
-                class="image"
-              />
-              <div style="padding: 14px;">
-                <span>新经典时尚中式</span>
-                <div class="bottom clearfix">
-                  <p class="nav4desc">全套新中式家具、建材，宁静安逸新生活</p>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="equippedWrap">
+          <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
+            <div class="equippedImg"><img :src="o.imgsrc"/></div>
+            <figcaption>
+              <span>{{o.title}}</span>
+              <p class="nav4desc">{{o.desc}}</p>
+            </figcaption>
+          </figure>
+        </div>
       </section>
+      <!-- 楼层style -->
       <section class="menu2" lazy>
         <el-menu
           :default-active="activeIndex3"
@@ -227,17 +190,17 @@
         </el-menu>
         <section class="menu2List">
           <el-row>
-            <el-col :span="24" v-for="o in 11" :key="o" :offset="0">
+            <el-col :span="24" v-for="(item,idx) in style" :key="idx" :offset="0">
               <el-card :body-style="{ padding: '14px'}">
                 <img
-                  src="http://pic1.quanmingwang.com/meal/meal_x2tvWvAmjA_20190426_!!90783.jpg"
+                  :src="item.imgsrc"
                   class="image"
                 />
                 <div class="menu2LiDesc">
-                  <span>现代简约XDJY-YX-1</span>
+                  <span>{{item.title}}</span>
                   <span>
                     关注
-                    <i>80</i>人
+                    <i>{{item.num}}</i>人
                   </span>
                 </div>
               </el-card>
@@ -304,10 +267,12 @@
 </template>
 <script>
 import "../css/base.css";
+// import {local} from '../Api'
 export default {
   props: ["num"],
   data() {
     return {
+      imgString:"http://localhost:1910/img/",
       activeIndex3: "1",
       mark: 0,
       lunboShow: {
@@ -318,109 +283,9 @@ export default {
         position: "relative",
         top: 0
       },
-      menu2: [
-        {
-          index: "1",
-          text: "现代"
-        },
-        {
-          index: "2",
-          text: "中式"
-        },
-        {
-          index: "3",
-          text: "欧式"
-        },
-        {
-          index: "4",
-          text: "美式"
-        }
-      ],
-      banner: [
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/6ioVbuBQTO_20190930_!!45918.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/BPZ7ynVI1a_20190430_!!77958.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/d8gfpgq7fL_20190226_!!43511.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/lLHQatwmje_20190226_!!57103.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/odxlQklEXW_20190226_!!63566.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/D7KxFAQD53_20190117_!!91827.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/hf5BYlpLjK_20181221_!!67782.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/FrlNaxvlxp_20190226_!!69310.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/t1oLTx34rP_20181115_!!53677.jpg"
-        },
-        {
-          src:
-            "http://pic1.quanmingwang.com/shop/GHJ9Rrh5nY_20190227_!!29512.jpg"
-        }
-      ],
-      navlist1: [
-        {
-          name: "分类",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten1.png"
-        },
-        {
-          name: "客厅",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten2.png"
-        },
-        {
-          name: "卧室",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten3.png"
-        },
-        {
-          name: "餐厅",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten4.png"
-        },
-        {
-          name: "儿童房",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten5.png"
-        },
-        {
-          name: "体验店",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten6.png"
-        },
-        {
-          name: "全屋定制",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten7.png"
-        },
-        {
-          name: "红木家具",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten8.png"
-        },
-        {
-          name: "个人中心",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten9.png"
-        },
-        {
-          name: "购物车",
-          src: "http://static.quanmingwang.com/mobile/index/images/ten10.png"
-        }
-      ],
-      navlist2: [
+      mainbanner:[],        //轮播图
+      ten_class:[],         //选择
+      navlist2: [         //瓷砖
         {
           src:
             "http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg"
@@ -446,15 +311,29 @@ export default {
             "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg"
         }
       ],
-      lunboList: [
-        "http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg",
-        "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
-        "http://pic1.quanmingwang.com/shop/VLvxasIRbl_20180609_!!60844.jpg",
-        "http://pic1.quanmingwang.com/shop/cZlRDl3P3Y_20190212_!!83184.jpg",
-        "http://pic1.quanmingwang.com/shop/snINFwEgIo_20180609_!!87493.jpg",
-        "http://pic1.quanmingwang.com/shop/fUCVIrrlrY_20180609_!!55691.jpg",
-        "http://pic1.quanmingwang.com/shop/VLvxasIRbl_20180609_!!60844.jpg",
-        "http://pic1.quanmingwang.com/shop/cZlRDl3P3Y_20190212_!!83184.jpg"
+      todayRecommended:{},  //今日推荐
+      newshoppinp:{},     //今日上市
+      equipped:{},        //美家整装
+      hotBanner:[],       //热卖单品轮播图
+      style:[],           //楼层style
+
+      menu2: [
+        {
+          index: "1",
+          text: "现代"
+        },
+        {
+          index: "2",
+          text: "中式"
+        },
+        {
+          index: "3",
+          text: "欧式"
+        },
+        {
+          index: "4",
+          text: "美式"
+        }
       ],
       oBanner: [
         {
@@ -526,13 +405,78 @@ export default {
         this.menu2Style.position = "relative";
         this.menu2Style.top = "0";
       }
+    },
+    getImgSrc(o,name){
+      if(name=="todayRecommended"||name=="newshoppinp"){
+        for(let key in o){
+          if(key=="rightPicDown"){
+            for(let idx in o[key]){
+              o[key][idx].imgsrc=this.imgString+o[key][idx].imgsrc;
+            }
+          }else{
+            o[key].imgsrc=this.imgString+o[key].imgsrc;
+          }
+        }
+      }
+      else if(name=="equipped"){
+        for(let key in o){
+          if(key=="titleSrc"){
+            o[key]=this.imgString+o[key];
+          }else{
+            for(let i in o[key]){
+              if(i=="title"){
+                o[key][i].imgsrc = this.imgString+o[key][i].imgsrc;
+              }else{
+                for(let m in o[key][i]){
+                  o[key][i][m].imgsrc = this.imgString+o[key][i][m].imgsrc;
+                }
+              }
+            }
+          }
+        }
+      }
+      else{
+        for(let key in o){
+          o[key].imgsrc=this.imgString+o[key].imgsrc;
+        }
+      }
+      
+      if(name=="mainbanner"){
+        this.mainbanner=o;
+      }else if(name=="ten_class"){
+        this.ten_class=o;
+      }else if(name=="todayRecommended"){
+        this.todayRecommended=o;
+      }else if(name=="newshoppinp"){
+        this.newshoppinp=o;
+      }else if(name=="equipped"){
+        this.equipped=o;
+      }else if(name=="hotBanner"){
+        this.hotBanner=o;
+      }else if(name=="style"){
+        this.style=o;
+      }
     }
   },
    async created() {
+    //  推荐页
     this.play();
-    let {data} = await this.$axios.get("http://10.3.136.139:1910");
-    console.log(data);
-    
+    let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
+    let m = data[0].mainbanner;    //轮播图
+    let t = data[0].ten_class;    //选择
+    let d = data[0].todayRecommended;
+    let n = data[0].newshoppinp;
+    let e = data[0].equipped;
+    let h = data[0].hotBanner;
+    let s = data[0].style;
+    this.getImgSrc(m,"mainbanner");
+    this.getImgSrc(t,"ten_class");
+    this.getImgSrc(d,"todayRecommended");
+    this.getImgSrc(n,"newshoppinp");
+    this.getImgSrc(e,"equipped");
+    this.getImgSrc(h,"hotBanner");
+    this.getImgSrc(s,"style");
+    let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
@@ -647,10 +591,8 @@ html {
     height: vw(468);
     background-color: #f0f0f0;
     .rTitle {
-      img {
-        display: block;
-        width: 100%;
-      }
+      width: 100%;
+      height: vw(88);
     }
     .rMain {
       width: vw(714);
@@ -660,10 +602,6 @@ html {
         width: vw(358);
         height: vw(358);
         float: left;
-        img {
-          width: 100%;
-          height: 100%;
-        }
       }
       .rMainRight {
         width: vw(356);
@@ -680,10 +618,6 @@ html {
           li {
             width: vw(176);
             height: vw(178);
-            img {
-              width: 100%;
-              height: 100%;
-            }
             &:nth-of-type(1) {
               width: 100%;
             }
@@ -705,14 +639,62 @@ html {
       width: 100%;
       height: vw(50);
     }
+    .equippedWrap{
+      width: 100%;
+      margin-top: vw(18);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      figure{
+        width: vw(348);
+        height: vw(320);
+        margin-bottom: vw(18);
+        .equippedImg{
+          width: 100%;
+          height: vw(228);
+        }
+        figcaption{
+          span {
+            display: block!important;
+            width: vw(312)!important;
+            font-size: 14px;
+            color: #e8ac44;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: vw(10);
+          }
+          p{
+            display: block;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #979797;
+          }
+        }
+      }
+    }
+
+    .el-col{
+      width: vw(348)!important;
+      height: vw(320)!important;
+      margin-bottom: vw(18)!important;
+    }
     .el-card {
       width: vw(348.5);
       margin-top: vw(18);
     }
     .el-card__body {
       span {
+        display: block!important;
+        width: vw(312)!important;
         font-size: 14px;
         color: #e8ac44;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .nav4desc {
         display: block;
