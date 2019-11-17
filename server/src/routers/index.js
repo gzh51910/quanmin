@@ -11,17 +11,17 @@ let homeRouter = require('./home');
 // 跨域解决方案CORS
 Router.use((req,res,next)=>{
     // 支持CORS跨域，只需要设置响应头
-    // res.header('Access-Control-Allow-Origin','*');
-    let currentOrigin = req.get('Origin');
-    // let allowOrigin = ['http://localhost:8080','http://localhost:8081']
-    if(allowOrigin.includes(currentOrigin)){
-        res.set({
-            'Access-Control-Allow-Origin':"*",
-            'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-            'Access-Control-Allow-HEADERS':"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
-        })
+    res.header('Access-Control-Allow-Origin','*');
+    // let currentOrigin = req.get('Origin');
+    // let allowOrigin = ['http://10.3.136.139:1910']
+    // if(allowOrigin.includes(currentOrigin)){
+    //     res.set({
+    //         'Access-Control-Allow-Origin':currentOrigin,
+    //         'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    //         'Access-Control-Allow-HEADERS':"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
+    //     })
         
-    }
+    // }
     // 跨域请求CORS中的预请求
     if(req.method=="OPTIONS") {
         res.sendStatus(200);/*让options请求快速返回*/
@@ -42,7 +42,15 @@ Router.use(express.json(),express.urlencoded({extended:false}));
 Router.use('/goods',goodsRouter)
 Router.use('/home',homeRouter)
 Router.use('/login',loginRouter)
-
-
+// token验证
+Router.get('/verify',(req,res)=>{
+    // 获取请求头上的token
+    let Authorization = req.get('Authorization');
+    if(token.verify(Authorization)){
+        res.send(formatData())
+    }else{
+        res.send(formatData({status:0}))
+    }
+})
 
 module.exports = Router;

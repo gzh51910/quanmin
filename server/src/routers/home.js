@@ -8,7 +8,7 @@ const {
     formatData
 } = require('../utils')
 
-
+// 首页分页
 
 Router.get('/fenye', async (req, res) => {
     let colName = 'fenye';
@@ -19,7 +19,7 @@ Router.get('/fenye', async (req, res) => {
     res.send(formatData({data}))
 })
 
-
+// 推荐页
 Router.get('/', async (req, res) => {
     let colName = 'homecomand';
     let data = await mongodb.find(colName, {});
@@ -27,15 +27,14 @@ Router.get('/', async (req, res) => {
         data
     }))
 })
-
+// 分类
 Router.get('/sorts', async (req, res) => {
     let colName = 'typeshop';
-    let
-        {index} = req.query
     let data = await mongodb.find(colName, {})
     res.send(formatData({data}))
 
 })
+// 分类列表页
 Router.post('/sorts', async (req, res) => {
         let  {type,page=1,pagesize=10}= req.body
     // 表名

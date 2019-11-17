@@ -9,9 +9,7 @@ const {
     token
 } = require('../utils');
 
-
-
-
+// 登录注册页
 const colName = 'user'
 Router.post('/', async (req, res) => {
 
@@ -46,16 +44,5 @@ Router.post('/', async (req, res) => {
         }))
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = Router
+

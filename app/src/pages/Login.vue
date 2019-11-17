@@ -18,12 +18,12 @@
             :disabled="disabled"
             v-if="disabled==false"
           >获取短信验证码</el-button>
-          <el-button
-            type="button"
-            @click="sendcode"
-            :disabled="disabled"
-            v-if="disabled==true"
-          >{{btntxt}}</el-button>
+            <el-button
+              type="button"
+              @click="sendcode"
+              :disabled="disabled"
+              v-if="disabled==true"
+            >{{btntxt}}</el-button>
         </el-form-item>
 
         <el-form-item>
@@ -55,6 +55,7 @@ export default {
     };
   },
   methods: {
+    // 获取随机数
     getRandonNum() {
       let res = "";
       for (let i = 0; i < 6; i++) {
@@ -63,7 +64,7 @@ export default {
       }
       return res;
     },
-    //手机验证发送验证码
+   //手机验证发送验证码
     sendcode() {
       const reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
       if (this.loginForm.phone == "") {
@@ -80,7 +81,7 @@ export default {
         });
         return;
       } else {
-        console.log(this.loginForm.phone);
+        // console.log(this.loginForm.phone);
         this.$message({
           message: "发送成功",
           type: "success",
@@ -90,8 +91,6 @@ export default {
         this.disabled = true;
         this.timer();
         this.nums = this.getRandonNum();
-        console.log(this.num);
-        console.log(this.nums);
       }
     },
     //60S倒计时
@@ -106,7 +105,6 @@ export default {
         this.disabled = false;
       }
     },
-
     imgjump() {
       this.$router.push("/Home");
     },
@@ -114,13 +112,27 @@ export default {
       this.$router.push("/loginagument");
     },
     submitForm() {
+      // this.
+      if (this.loginForm.phone == "") {
+        this.$message({
+          message: "手机号不能为空",
+          center: true
+        });
+        return;
+      }
+      if(this.num===""){
+       this.$message({
+          message: "验证码不能为空",
+          center: true
+        });
+        return
+      }
       if (this.nums === this.num) {
+        this.$axios.
         // this.$router.push("/loginsucess");
         console.log("ok");
       } else {
         console.log("no");
-        console.log(this.nums);
-        console.log(this.num);
       }
     }
   }
@@ -161,7 +173,6 @@ export default {
           width: 55%;
           border-radius: 0;
           background-color: #fafafa;
-          float: left;
           display: inline-block;
         }
         .el-button {
@@ -170,7 +181,6 @@ export default {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
           border-left: 0;
-          float: left;
           display: inline-block;
         }
       }
