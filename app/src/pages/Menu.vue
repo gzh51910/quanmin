@@ -476,7 +476,7 @@ export default {
     this.getImgSrc(e,"equipped");
     this.getImgSrc(h,"hotBanner");
     this.getImgSrc(s,"style");
-    let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
+    // let {data:{data}} = await this.$axios.get("http://localhost:1910/home");
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
