@@ -11,6 +11,47 @@
         <li class="fenqi">分期宝贝</li>
       </ul>
     </div>
+
+    <!-- 购物车 -->
+    <div class="page-cart">
+      <div v-for="item in goodslist" :key="item.id">
+        <el-row :gutter="30">
+          <!-- <el-radio v-model="radio" label="1">备选项</el-radio> -->
+          <el-col :span="4">
+            <el-radio v-model="radio" label="1">备选项</el-radio>
+            <img :src="item.imgurl" />
+          </el-col>
+          <el-col :span="16">
+            <h4>{{item.name}}</h4>
+            <p class="price">
+              <span>{{item.price}}</span>
+              <el-input-number size="mini" v-model="item.qty" @change="changeQty(item.id,$event)"></el-input-number>
+            </p>&times;
+          </el-col>
+          <el-col :span="4" style="text-align:right">
+            <el-button
+              type="danger"
+              icon="el-icon-delete"
+              circle
+              size="mini"
+              @click="removeItem(item.id)"
+            ></el-button>
+          </el-col>
+        </el-row>
+        <!-- 添加分割线 -->
+        <el-divider></el-divider>
+      </div>
+      <el-row :gutter="30">
+        <el-col :span="12">
+          <el-button type="danger" icon="el-icon-delete" size="mini" @click="clearCart">清空购物车</el-button>
+        </el-col>
+        <el-col :span="12" class="price" style="text-align:right">
+          总计：
+          <span>{{totalPrice.toFixed(2)}}</span>
+        </el-col>
+      </el-row>
+    </div>
+
     <!-- <section class="cartcontain">
       <img src="../img/emptyCart.png" class="emptycar" />
     </section>-->
@@ -24,6 +65,36 @@ import footernav from "../pages/footernav.vue";
 export default {
   components: {
     footernav
+  },
+  data() {
+    return { radio: "2" };
+  },
+  // 计算总价，qty为数量，reduce为累计
+  computed: {
+    goodslist() {
+      return this.$store.state.goodslist;
+    },
+
+    totalPrice() {
+      return this.goodslist.reduce(
+        (prev, item) => prev + item.price * item.qty,
+        0
+      );
+    }
+  },
+  methods: {
+    removeItem(id) {
+      this.$store.commit("removeFromCart", id);
+    },
+    clearCart() {
+      this.$store.commit("clearCart");
+    },
+    changeQty(id, qty) {
+      this.$store.commit("changeQty", { id, qty });
+    }
+    // cartoshop() {
+    //   this.$router.push("/goods");
+    // }
   }
 };
 </script>
@@ -73,6 +144,15 @@ export default {
     width: 100%;
     height: 100%;
     margin-left: vw(70);
+  }
+}
+.page-cart {
+  margin-top: vw(40);
+  img {
+    width: 100%;
+  }
+  h4 {
+    margin-top: 0;
   }
 }
 </style>

@@ -17,6 +17,12 @@ import Hezuo from '../pages/Hezuo';
 import Loginagument from '../pages/loginagument.vue';
 import Loginsucess from '../pages/loginsucess.vue';
 import Menu from '../pages/Menu.vue';
+import Goodsdetail from '../pages/goodsdetail.vue'
+import Shopfail from '../pages/shopfail.vue';
+import Shopsucess from '../pages/shopsucess.vue';
+import Cartbought from '../pages/cartbought.vue';
+
+
 
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
@@ -86,6 +92,25 @@ const router = new VueRouter({
             name: 'menu',
             path: '/menu',
             component: Menu
+        }, {
+            name: 'goodsdetail',
+            path: '/goodsdetail',
+            component: Goodsdetail
+        },
+        {
+            name: 'shopfail',
+            path: '/shopfail',
+            component: Shopfail,
+        },
+        {
+            name: 'shopsucess',
+            path: '/shopsucess',
+            component: Shopsucess,
+        },
+        {
+            name: 'cartbought',
+            path: '/cartbought',
+            component: Cartbought,
         },
     ]
 });

@@ -9,9 +9,16 @@
       active-text-color="#d22817"
       router
     >
+      <!-- 添加购物车图标 -->
       <el-menu-item :index="item.path" v-for="item in footernav" :key="item.name">
-        <i :class="item.icon"></i>
-        {{item.text}}
+        <el-badge :value="cartlength" v-if="item.name=='cart'">
+          <i :class="item.icon"></i>
+          {{item.text}}
+        </el-badge>
+        <template v-else>
+          <i :class="item.icon"></i>
+          {{item.text}}
+        </template>
       </el-menu-item>
     </el-menu>
   </footer>
@@ -42,8 +49,8 @@ export default {
         {
           name: "cart",
           path: "/cart",
-          text: "购物车",
-          icon: "iconfont icongouwuche"
+          text: "购物车"
+          // icon: "iconfont icongouwuche"
         },
         {
           name: "login",
@@ -53,6 +60,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    cartlength() {
+      return this.$store.state.goodslist.length;
+    }
   }
 };
 </script>
@@ -92,6 +104,14 @@ footer {
     color: #4d4d4d;
     i {
       height: vw(46);
+    }
+  }
+  .el-menu {
+    .el-badge {
+      margin-top: vw(40);
+      .el-badge__content {
+        top: vw(30);
+      }
     }
   }
 }

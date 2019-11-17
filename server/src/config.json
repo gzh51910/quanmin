@@ -1,5 +1,5 @@
 {
-    "PORT":1910,
-    "dbUrl":"mongodb://10.3.136.139:27017",
-    "dbName":"QuanMinWang"
+    "PORT": 1910,
+    "dbUrl": "mongodb://localhost:27017",
+    "dbName": "QuanMinWang"
 }

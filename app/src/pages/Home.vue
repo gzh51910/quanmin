@@ -40,7 +40,10 @@
     <main>
       <menulist :num="num" />
     </main>
-    <footer>
+    <section id="footernav">
+      <footernav />
+    </section>
+    <!-- <footer>
       <el-menu
         :default-active="activeIndex2"
         class="el-menu-demo"
@@ -55,12 +58,13 @@
           {{item.text}}
         </el-menu-item>
       </el-menu>
-    </footer>
+    </footer>-->
   </div>
 </template>
 <script>
 // import axios from "axios";
 import menulist from "./Menu.vue";
+import footernav from "../pages/footernav.vue";
 export default {
   data() {
     return {
@@ -128,39 +132,39 @@ export default {
           path: "/mine",
           text: "红木馆"
         }
-      ],
-      footernav: [
-        {
-          name: "home",
-          path: "/home",
-          text: "首页",
-          icon: "iconfont iconshouye"
-        },
-        {
-          name: "sort",
-          path: "/sort",
-          text: "分类",
-          icon: "iconfont iconleimupinleifenleileibie"
-        },
-        {
-          name: "hezuo",
-          path: "/hezuo",
-          text: "商务合作",
-          icon: "iconfont iconhezuo"
-        },
-        {
-          name: "cart",
-          path: "/cart",
-          text: "购物车",
-          icon: "iconfont icongouwuche"
-        },
-        {
-          name: "login",
-          path: "/login",
-          text: "我的",
-          icon: "iconfont iconwode"
-        }
       ]
+      // footernav: [
+      //   {
+      //     name: "home",
+      //     path: "/home",
+      //     text: "首页",
+      //     icon: "iconfont iconshouye"
+      //   },
+      //   {
+      //     name: "sort",
+      //     path: "/sort",
+      //     text: "分类",
+      //     icon: "iconfont iconleimupinleifenleileibie"
+      //   },
+      //   {
+      //     name: "hezuo",
+      //     path: "/hezuo",
+      //     text: "商务合作",
+      //     icon: "iconfont iconhezuo"
+      //   },
+      //   {
+      //     name: "cart",
+      //     path: "/cart",
+      //     text: "购物车",
+      //     icon: "iconfont icongouwuche"
+      //   },
+      //   {
+      //     name: "login",
+      //     path: "/login",
+      //     text: "我的",
+      //     icon: "iconfont iconwode"
+      //   }
+      // ]
     };
   },
   methods: {
@@ -172,11 +176,11 @@ export default {
       this.num = idx;
     }
   },
-  created() {
-  },
+  created() {},
 
   components: {
-    menulist
+    menulist,
+    footernav
   }
 };
 </script>
@@ -211,8 +215,7 @@ html {
   overflow: -moz-scrollbars-vertical;
 }
 header,
-main,
-footer {
+main {
   min-width: 320px;
   max-width: 750px;
   margin: 0 auto;
@@ -283,32 +286,32 @@ main {
   background-color: #f2f2f2;
 }
 
-footer {
-  display: flex;
-  height: vw(100);
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  ul {
-    width: 100%;
-  }
-  li {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: vw(22);
-    color: #4d4d4d;
-    i {
-      height: vw(46);
-    }
-  }
-}
+// footer {
+//   display: flex;
+//   height: vw(100);
+//   width: 100%;
+//   justify-content: space-around;
+//   align-items: center;
+//   background-color: #fff;
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   ul {
+//     width: 100%;
+//   }
+//   li {
+//     width: 20%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     font-size: vw(22);
+//     color: #4d4d4d;
+//     i {
+//       height: vw(46);
+//     }
+//   }
+// }
 </style>
