@@ -12,16 +12,16 @@ let homeRouter = require('./home');
 Router.use((req,res,next)=>{
     // 支持CORS跨域，只需要设置响应头
     res.header('Access-Control-Allow-Origin','*');
-    // let currentOrigin = req.get('Origin');
-    // let allowOrigin = ['http://10.3.136.139:1910']
-    // if(allowOrigin.includes(currentOrigin)){
-    //     res.set({
-    //         'Access-Control-Allow-Origin':currentOrigin,
-    //         'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-    //         'Access-Control-Allow-HEADERS':"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
-    //     })
+    let currentOrigin = req.get('Origin');
+    let allowOrigin = ['http://10.3.136.139:1910','http://localhost:8080','http://localhost:8081','http://localhost:8082','http://localhost:8083']
+    if(allowOrigin.includes(currentOrigin)){
+        res.set({
+            'Access-Control-Allow-Origin':currentOrigin,
+            'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+            'Access-Control-Allow-HEADERS':"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
+        })
         
-    // }
+    }
     // 跨域请求CORS中的预请求
     if(req.method=="OPTIONS") {
         res.sendStatus(200);/*让options请求快速返回*/

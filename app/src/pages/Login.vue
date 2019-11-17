@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { local } from "../Api";
+
 export default {
   name: "loginForm",
   data() {
@@ -87,10 +89,13 @@ export default {
           type: "success",
           center: true
         });
+       
+        
         this.time = 60;
         this.disabled = true;
         this.timer();
         this.nums = this.getRandonNum();
+         console.log(this.nums);
       }
     },
     //60S倒计时
@@ -111,7 +116,7 @@ export default {
     logintipsa() {
       this.$router.push("/loginagument");
     },
-    submitForm() {
+    async submitForm() {
       // this.
       if (this.loginForm.phone == "") {
         this.$message({
@@ -120,17 +125,34 @@ export default {
         });
         return;
       }
-      if(this.num===""){
-       this.$message({
+      if (this.num === "") {
+        this.$message({
           message: "验证码不能为空",
           center: true
         });
-        return
+        return;
       }
       if (this.nums === this.num) {
-        this.$axios.
-        // this.$router.push("/loginsucess");
         console.log("ok");
+        let username = this.loginForm.phone;
+        window.console.log(username);
+        let result = await local.post("/login", {
+          username
+        });
+        let { data, headers } = result;
+       console.log(headers);
+        let message = data.msg;
+        this.$message({
+          message,
+          center: true
+        });
+        let user = data.data[0];
+        
+        // 从响应头中获取Authorization
+        user.Authorization = headers.authorization;
+
+        this.$store.commit("login", user);
+        this.$router.push("/loginsucess");
       } else {
         console.log("no");
       }

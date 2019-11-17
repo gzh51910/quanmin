@@ -27,6 +27,7 @@
 export default {
   data() {
     return {
+      activeIndex2: "/home",
       footernav: [
         {
           name: "home",
