@@ -142,56 +142,6 @@
           </div>
         </div>
       </section>
-      <section class="navlist4">
-        <div class="nav4title1">
-          <img :src="equipped.titleSrc" alt />
-        </div>
-        <!-- 新中式 -->
-        <div class="nav4title2">
-          <img :src="equipped.Chinese.title.imgsrc" alt />
-        </div>
-        <div class="equippedWrap">
-          <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
-            <div class="equippedImg">
-              <img :src="o.imgsrc" />
-            </div>
-            <figcaption>
-              <span>{{o.title}}</span>
-              <p class="nav4desc">{{o.desc}}</p>
-            </figcaption>
-          </figure>
-        </div>
-        <!-- 美式 -->
-        <div class="nav4title2">
-          <img :src="equipped.America.title.imgsrc" alt />
-        </div>
-        <div class="equippedWrap">
-          <figure v-for="(o,idx) in equipped.America.main" :key="idx">
-            <div class="equippedImg">
-              <img :src="o.imgsrc" />
-            </div>
-            <figcaption>
-              <span>{{o.title}}</span>
-              <p class="nav4desc">{{o.desc}}</p>
-            </figcaption>
-          </figure>
-        </div>
-        <!-- 欧式 -->
-        <div class="nav4title2">
-          <img :src="equipped.Europe.title.imgsrc" alt />
-        </div>
-        <div class="equippedWrap">
-          <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
-            <div class="equippedImg">
-              <img :src="o.imgsrc" />
-            </div>
-            <figcaption>
-              <span>{{o.title}}</span>
-              <p class="nav4desc">{{o.desc}}</p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
       <!-- 楼层style -->
       <section class="menu2" lazy>
         <el-menu

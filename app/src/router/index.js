@@ -102,16 +102,6 @@ const router = new VueRouter({
             component: Shopsucess,
         },
 
-<<<<<<< HEAD
-        // {
-        //     name: 'cartbought',
-        //     path: '/cartbought',
-        //     component: Cartbought,
-        //     meta: { requiresAuth: true }
-        // }
-=======
->>>>>>> af5427ca128fc82af1b99d2e88a335a0a207ba3e
-
     ]
 });
 
