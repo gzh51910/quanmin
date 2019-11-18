@@ -119,12 +119,12 @@
           </div>
         </section>
         <!-- 美家整装 -->
-        <section class="navlist4">
+        <section class="navlist4" lazy>
           <div class="nav4title1">
             <img :src="equipped.titleSrc" alt />
           </div>
           <!-- 新中式 -->
-          <div class="nav4title2">
+          <div class="nav4title2" lazy>
             <img :src="equipped.Chinese.title.imgsrc" alt />
           </div>
           <div class="equippedWrap">
@@ -139,7 +139,7 @@
             </figure>
           </div>
           <!-- 美式 -->
-          <div class="nav4title2">
+          <div class="nav4title2" lazy>
             <img :src="equipped.America.title.imgsrc" alt />
           </div>
           <div class="equippedWrap">
@@ -154,7 +154,7 @@
             </figure>
           </div>
           <!-- 欧式 -->
-          <div class="nav4title2">
+          <div class="nav4title2" lazy>
             <img :src="equipped.Europe.title.imgsrc" alt />
           </div>
           <div class="equippedWrap">
@@ -169,7 +169,7 @@
             </figure>
           </div>
           <!-- 热卖单品 -->
-          <div class="hotgoods">
+          <div class="hotgoods" lazy>
             <div class="lunbo">
               <div class="lunboImgWrap" :style="lunboShow">
                 <div class="lunboImg" v-for="item in hotBanner" :key="item.index">
@@ -203,7 +203,7 @@
           <section class="menu2List">
             <el-row>
               <el-col :span="24" v-for="(item,idx) in style" :key="idx" :offset="0">
-                <el-card :body-style="{ padding: '14px'}">
+                <el-card :body-style="{ padding: '14px'}" lazy>
                   <img :src="item.imgsrc" class="image" />
                   <div class="menu2LiDesc">
                     <span>{{item.title}}</span>
@@ -659,12 +659,14 @@ main {
   margin-bottom: vw(110);
   background-color: #f2f2f2;
   .Recommend {
+    height: 100%;
+    overflow: auto;
     .bannerWrap {
       .el-carousel {
-        height: vw(252) !important;
+        height: vw(300) !important;
       }
       .el-carousel__item {
-        height: vw(252) !important;
+        height: vw(300) !important;
       }
       .el-carousel__button {
         width: 8px;
