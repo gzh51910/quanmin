@@ -27,9 +27,9 @@
       >
         <el-menu-item
           :index="item.name"
-          v-for="(item,idx) in menu"
+          v-for="item in menu"
           :key="item.text"
-          @click="getNum(idx)"
+          @click="getNum(item.name)"
         >{{item.text}}</el-menu-item>
       </el-menu>
       <!-- <nav>
@@ -48,13 +48,13 @@
         </section>
         <!-- 选择 -->
         <nav class="navlist1" v-if="ten_class.length!=0">
-          <li v-for="item in ten_class" :key="item.index">
+          <li v-for="item in ten_class" :key="item.index" @click="choose(item.index)">
             <img :src="item.imgsrc" alt />
             {{item.title}}
           </li>
         </nav>
         <nav class="navlist2">
-          <li v-for="item in navlist2" :key="item.src" @click="getNum(item.num)">
+          <li v-for="item in navlist2" :key="item.num" @click="getNum(item.num)">
             <img :src="item.src" alt />
           </li>
         </nav>
@@ -234,69 +234,69 @@ import footernav from "../pages/footernav.vue";
 export default {
   data() {
     return {
-      activeIndex: "1",
+      activeIndex: "0",
       num: 0,
       showMSg: [],
       imgString: "http://localhost:1910/img/",
       // activeIndex2: "/home",
       menu: [
         {
-          name: "1",
+          name: "0",
           path: "/home",
           text: "推荐"
         },
         {
-          name: "2",
+          name: "1",
           path: "/menu",
           text: "墙地材料"
         },
         {
-          name: "3",
+          name: "2",
           path: "/cart",
           text: "卫浴用品"
         },
         {
-          name: "4",
+          name: "3",
           path: "/mine",
           text: "灯饰照明"
         },
         {
-          name: "5",
+          name: "4",
           path: "/mine",
           text: "厨房用品"
         },
         {
-          name: "6",
+          name: "5",
           path: "/mine",
           text: "门/配件/五金"
         },
         {
-          name: "7",
+          name: "6",
           path: "/mine",
           text: "客厅"
         },
         {
-          name: "8",
+          name: "7",
           path: "/mine",
           text: "卧室"
         },
         {
-          name: "9",
+          name: "8",
           path: "/mine",
           text: "餐厅"
         },
         {
-          name: "10",
+          name: "9",
           path: "/mine",
           text: "书房"
         },
         {
-          name: "11",
+          name: "10",
           path: "/mine",
           text: "儿童房"
         },
         {
-          name: "12",
+          name: "11",
           path: "/mine",
           text: "红木馆"
         }
@@ -383,12 +383,24 @@ export default {
     sortjump() {
       this.$router.push("/Sort");
     },
-    test(num){
-      console.log("监听成功"+num);
-      
-    },
     getNum(idx) {
       this.num = idx;
+      this.activeIndex=idx.toString();
+    },
+    choose(idx){
+      if(idx=="1"){
+        this.getNum(6);
+      }else if(idx=="2"){
+        this.getNum(7);
+      }else if(idx=="3"){
+        this.getNum(8);
+      }else if(idx=="4"){
+        this.getNum(10);
+      }else if(idx=="5"){
+        this.getNum(0);
+      }else if(idx=="7"){
+        this.getNum(11);
+      }
     },
     getmsgSrc(o, name) {
       if (name == "list") {
