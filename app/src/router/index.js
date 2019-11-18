@@ -34,37 +34,19 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> a1219f52c47abf7b056b40823c8dcd68fdd4907c
         {
             name: 'login',
             path: '/login',
             component: Login
         },
-     
+
         {
             name: 'cart',
             path: '/cart',
-<<<<<<< HEAD
-            component: Cart,
-            meta: {
-                requiresAuth: true
-            }
-
-=======
             component: Cart
         },
 
-        {
-            name: 'goods',
-            path: '/goods',
-            component: Goods
->>>>>>> a1219f52c47abf7b056b40823c8dcd68fdd4907c
-        },
 
-       
         {
             name: 'sort',
             path: '/sort',
@@ -123,7 +105,7 @@ router.beforeEach((to, from, next) => {
         // let Authorization = localStorage.getItem('Authorization');
         let $store = router.app.$store
         let Authorization = $store.state.common.user.Authorization;
-        console.log("Authorization",Authorization);
+        console.log("Authorization", Authorization);
 
         if (Authorization) {
             // 登录则放行
@@ -134,8 +116,8 @@ router.beforeEach((to, from, next) => {
                 headers: {
                     Authorization
                 }
-              
-                
+
+
             }).then(({
                 data
             }) => {
