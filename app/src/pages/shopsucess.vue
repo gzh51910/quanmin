@@ -3,20 +3,22 @@
     <section id="shopselect">
       <shopselect />
     </section>
-    <el-row>
-      <el-col :span="11" v-for="item in shoplist" :key="item.src">
-        <el-card :body-style="{ padding: '0' }">
+    <el-row v-infinite-scroll="load">
+      <el-col :span="12" v-for="item in shoplist" :key="item.id">
+        <el-card :body-style="{ padding: '0' }"
+        @click.native="getgoodsdetail(item.id,item.type)">
           <img :src="item.imgsrc" class="image" />
           <div style="padding: vw(20);">
             <P class="title">{{item.name}}</P>
-            <P class="desc">{{item.desc}}</P>
+            <P class="desc">{{[item.level]}}{{item.desc}}</P>
             <div class="bottom clearfix">
-              <span class="price">{{ item.price }}</span>
-              <span class="sale">已售20件</span>
+              <span class="price">{{item.price}}</span>
+              <span class="sale">已售0件</span>
             </div>
           </div>
         </el-card>
       </el-col>
+    
     </el-row>
   </div>
 </template>
@@ -27,33 +29,42 @@ export default {
   data() {
     return {
       shoplist: [],
-      list2: [],
-      shoplist222: [],
-      imgstring: "http://localhost:1910/img/"
+      imgstring: "http://localhost:1910/img/",
+      page: 0,
     };
   },
 
   components: {
     shopselect
   },
-  async created() {
-    let { type } = this.$route.query;
-    await this.getdata(type);
-
-    //  let a= data.data.map((ele,index)=>{
-
-    //   }
-    // this.shoplist.push()
-  },
+  
   methods: {
     async getdata(type, page) {
       let { data } = await local.get("goods", { type, page });
-      console.log(data);
       data.data.forEach(ele => {
         this.shoplist.push(ele);
       });
-      console.log("shoplist", this.shoplist);
+    },
+    load() {
+      let { type } = this.$route.query;
+      this.page++;
+      this.getdata(type, this.page);
+      console.log(this.page);
+    },
+    // 跳转商品详情
+    getgoodsdetail(id,type){
+      this.$router.push({
+        name: "goodsdetail",
+        params: { id },
+        query: { id,type}
+      });
     }
+  },
+  created(){
+      // let { type } = this.$route.query;
+      console.log(this.$route.query);
+      // this.getdata(type)
+
   }
 };
 </script>
@@ -62,23 +73,24 @@ export default {
   @return ($px / 750) * 100vw;
 }
 #ss {
-  margin-left: vw(30);
+  // margin: vw(30);
   width: 100%;
   .title {
-    font-size: vw(26);
+    font-size: vw(30);
     color: #000;
   }
   .desc {
-    font-size: vw(18);
+    font-size: vw(20);
     color: #000;
     overflow: hidden;
-text-overflow:  ellipsis;
-display:  -webkit-box;
--webkit-line-clamp:  2;
--webkit-box-orient:  vertical
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .bottom {
+    margin-top: vw(5);
     width: 100%;
     border-top: 1px dashed #ccc;
     height: vw(80);

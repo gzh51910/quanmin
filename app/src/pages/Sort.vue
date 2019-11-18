@@ -56,7 +56,11 @@ export default {
       }
     },
     sortjump(type) {
-    this.$router.push({name:'shopsucess',params:{type},query:{type}})
+      this.$router.push({
+        name: "shopsucess",
+        params: { type },
+        query: { type }
+      });
     }
   },
   created() {
