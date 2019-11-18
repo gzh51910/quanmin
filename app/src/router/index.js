@@ -34,7 +34,10 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> a1219f52c47abf7b056b40823c8dcd68fdd4907c
         {
             name: 'login',
             path: '/login',
@@ -44,11 +47,21 @@ const router = new VueRouter({
         {
             name: 'cart',
             path: '/cart',
+<<<<<<< HEAD
             component: Cart,
             meta: {
                 requiresAuth: true
             }
 
+=======
+            component: Cart
+        },
+
+        {
+            name: 'goods',
+            path: '/goods',
+            component: Goods
+>>>>>>> a1219f52c47abf7b056b40823c8dcd68fdd4907c
         },
 
        
@@ -99,7 +112,6 @@ const router = new VueRouter({
             path: '/shopsucess',
             component: Shopsucess,
         },
-
 
     ]
 });
