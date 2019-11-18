@@ -1,30 +1,33 @@
-<template>
+<template >
   <div>
     <div id="detailhead">
       <img src="../img/back.png" @click="backshop" />
       <ul>
-        <li v-for="item in menu" :key="item.name" @click="aa">{{item.text}}</li>
+        <li v-for="item in menu" :key="item">{{item}}</li>
       </ul>
       <img src="../img/more.png" alt />
     </div>
     <div class="lunbo">
       <!-- 轮播图 -->
       <el-carousel :interval="5000" arrow="always">
-        <el-carousel-item v-for="item in 3" :key="item"></el-carousel-item>
+        <el-carousel-item v-for="(ele,idx) in banner" :key="idx">
+          <img :src="ele" alt="">
+
+        </el-carousel-item>
       </el-carousel>
       <div>
         <img src="../img/platform-service.png" alt />
       </div>
       <!-- 产品参数 -->
       <div class="product">
-        <h2>源图陶瓷室内墙砖 300*800厨卫墙砖现代简约地砖卫生间墙面砖</h2>
+        <h2>{{desc}}</h2>
         <p class="pricea">
-          <span class="priceb">¥19</span>
-          <span class="productid">产品平台编号：3000</span>
+          <span class="priceb">{{price}}</span>
+          <span class="productid">{{"产品编号"+id}}</span>
         </p>
       </div>
       <el-button-group class="sumcar">
-        <el-button type="danger" icon="el-icon-shopping-cart-2" @click="add2cart">加入购物车</el-button>
+        <el-button type="danger" icon="el-icon-shopping-cart-2">加入购物车</el-button>
       </el-button-group>
       <h3 class="tuijian">为您推荐</h3>
       <el-row :gutter="20">
@@ -38,22 +41,43 @@
   </div>
 </template>
 <script>
+import { local } from "../Api";
+// import {local} from '../Api'
 export default {
   data() {
     return {
       activeIndex: "1",
-      menu: [
-        { name: 1, text: "商品" },
-        { name: 1, text: "评价" },
-        { name: 1, text: "详情" },
-        { name: 1, text: "推荐" }
-      ]
+      type: "",
+      id: "",
+      menu: ["商品", "评价", "详情", "推荐"],
+      banner: [],
+      desc: "",
+      price: ""
     };
   },
   methods: {
-    backshop() {
-      this.$router.push("/shopsucess");
+    backshop(type) {
+      this.$router.push({ name: "shopsucess", query: { type } });
+    },
+    // 拿数据
+    async getdata(id) {
+      let { data } = await local.get(`goods/${id}`);
+      console.log("getdata", data);
+      this.banner = data.data[0].commons;
+      this.desc = data.data[0].desc;
+      this.price = data.data[0].price;
+      this.id = data.data[0].id;
+      console.log("getdata", data.data[0].commons);
+      console.log(this.id);
+      
     }
+  },
+  // 渲染
+  created() {
+    // console.log(this.$route);
+    let { type, id } = this.$route.query;
+    this.getdata(id);
+    
   }
 };
 </script>
@@ -101,13 +125,18 @@ export default {
   margin-left: vw(30);
   height: vw(200);
   h2 {
+    font-size: vw(40);
     margin-top: vw(30);
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .pricea {
     margin-top: vw(20);
     .priceb {
-      float: left;
       font-size: vw(50);
       font-weight: bold;
       display: inline-block;
@@ -118,7 +147,6 @@ export default {
       margin-top: vw(15);
       font-size: vw(30);
       display: inline-block;
-      float: right;
       margin-right: vw(20);
     }
   }
