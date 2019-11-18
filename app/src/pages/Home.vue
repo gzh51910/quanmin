@@ -54,7 +54,7 @@
           </li>
         </nav>
         <nav class="navlist2">
-          <li v-for="item in navlist2" :key="item.src">
+          <li v-for="item in navlist2" :key="item.src" @click="getNum(item.num)">
             <img :src="item.src" alt />
           </li>
         </nav>
@@ -318,28 +318,34 @@ export default {
       navlist2: [
         //瓷砖
         {
-          src:
-            "http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg"
+          src:"http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg",
+          num:1
+
         },
         {
           src:
-            "http://pic1.quanmingwang.com/shop/s8nkNzU0Mc_20180329_!!89315.jpg"
+            "http://pic1.quanmingwang.com/shop/s8nkNzU0Mc_20180329_!!89315.jpg",
+          num:1
         },
         {
           src:
-            "http://pic1.quanmingwang.com/shop/9VqPNQhbvk_20180329_!!79269.jpg"
+            "http://pic1.quanmingwang.com/shop/9VqPNQhbvk_20180329_!!79269.jpg",
+          num:1
         },
         {
           src:
-            "http://pic1.quanmingwang.com/shop/1OHyOqaKg3_20180329_!!76066.jpg"
+            "http://pic1.quanmingwang.com/shop/1OHyOqaKg3_20180329_!!76066.jpg",
+          num:1
         },
         {
           src:
-            "http://pic1.quanmingwang.com/shop/3rpwFyMngd_20180416_!!10252.jpg"
+            "http://pic1.quanmingwang.com/shop/3rpwFyMngd_20180416_!!10252.jpg",
+          num:1
         },
         {
           src:
-            "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg"
+            "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg",
+          num:1
         }
       ],
       todayRecommended: {}, //今日推荐
