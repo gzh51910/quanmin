@@ -6,7 +6,7 @@
           <img src="../img/default_avatar.png" class="pepole" />
         </div>
         <div class="manmsg">
-          <p class="msgnum">12222222222</p>
+          <p class="msgnum">{{userName}}</p>
           <p class="shangcheng">
             <i class="el-icon-sunny"></i>
             <span class="yiti">全民家具建材一体商城</span>
@@ -96,13 +96,23 @@
 <script>
 import footernav from "../pages/footernav.vue";
 export default {
+  data(){
+    return{
+        userName:""
+    }
+  },
   components: {
     footernav
   },
   methods: {
+   
     loginout() {
       this.$router.push("/Login");
+       this.$store.commit("logout");
     }
+  },created(){
+    let $store = this.$router.app.$store
+    this.userName=$store.state.common.user.username
   }
 };
 </script>

@@ -36,10 +36,11 @@ Router.post('/', async (req, res) => {
         let result = await mongodb.create(colName, {
             username
         })
+        data = await mongodb.find(colName, {
+            username
+        });
         res.send(formatData({
-            data: {
-                username,
-            },
+            data,
             msg: "注册成功"
         }))
     }

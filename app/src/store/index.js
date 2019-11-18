@@ -2,6 +2,7 @@
 import Vue from 'vue'
 // 1.引入vuex
 import Vuex from 'vuex';
+import common from './common';
 // 2.使用vuex
 Vue.use(Vuex);
 // 3.实例化一个store
@@ -53,7 +54,10 @@ let store = new Vuex.Store({
                 }
             })
         }
-    }
+    },
+    modules:{
+        common
+      }
 })
 // 4.导出
 export default store;
