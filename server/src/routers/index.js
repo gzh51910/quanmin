@@ -1,7 +1,7 @@
 const express = require('express');
 
 let Router = express.Router();
-
+const {token,formatData} = require('../utils')
 let loginRouter = require('./login');
 let goodsRouter = require('./goods');
 let homeRouter = require('./home');
@@ -45,7 +45,11 @@ Router.use('/login',loginRouter)
 // token验证
 Router.get('/verify',(req,res)=>{
     // 获取请求头上的token
+    console.log("verify","成功");
+    
     let Authorization = req.get('Authorization');
+    console.log(Authorization);
+    
     if(token.verify(Authorization)){
         res.send(formatData())
     }else{

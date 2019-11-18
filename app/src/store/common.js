@@ -16,7 +16,8 @@ export default {
     mutations:{
         login(state,user){
             state.user = user;
-
+            console.log("localStorage成功");
+            
             // 设置本地存储
             localStorage.setItem('user',JSON.stringify(user))
         },

@@ -6,12 +6,8 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../pages/Home.vue';
-// import Reg from '../pages/Reg.vue';
 import Login from '../pages/Login.vue';
-import Mine from '../pages/Mine.vue';
 import Cart from '../pages/Cart.vue';
-// import List from '../pages/List.vue';
-import Goods from '../pages/Goods.vue';
 import Sort from '../pages/Sort.vue';
 import Hezuo from '../pages/Hezuo';
 import Loginagument from '../pages/loginagument.vue';
@@ -22,7 +18,10 @@ import Shopfail from '../pages/shopfail.vue';
 import Shopsucess from '../pages/shopsucess.vue';
 
 
-
+// 引入Api
+import {
+    local
+} from '../Api'
 
 
 //3.实例化VueRouter并配置参数
@@ -35,30 +34,24 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
-      
+
         {
             name: 'login',
             path: '/login',
             component: Login
         },
-        {
-            name: 'mine',
-            path: '/mine',
-            component: Mine,
-            meta: { requiresAuth: true }
-
-        },
+     
         {
             name: 'cart',
             path: '/cart',
-            component: Cart
+            component: Cart,
+            meta: {
+                requiresAuth: true
+            }
+
         },
-     
-        {
-            name: 'goods',
-            path: '/goods',
-            component: Goods
-        },
+
+       
         {
             name: 'sort',
             path: '/sort',
@@ -78,11 +71,15 @@ const router = new VueRouter({
             name: 'loginagument',
             path: '/loginagument',
             component: Loginagument,
+
         },
         {
             name: 'loginsucess',
             path: '/loginsucess',
             component: Loginsucess,
+            meta: {
+                requiresAuth: true
+            }
         }, {
             name: 'menu',
             path: '/menu',
@@ -103,7 +100,7 @@ const router = new VueRouter({
             component: Shopsucess,
         },
 
-  
+
     ]
 });
 
@@ -114,7 +111,7 @@ router.beforeEach((to, from, next) => {
         // let Authorization = localStorage.getItem('Authorization');
         let $store = router.app.$store
         let Authorization = $store.state.common.user.Authorization;
-        console.log(Authorization);
+        console.log("Authorization",Authorization);
 
         if (Authorization) {
             // 登录则放行
@@ -125,7 +122,11 @@ router.beforeEach((to, from, next) => {
                 headers: {
                     Authorization
                 }
-            }).then(({ data }) => {
+              
+                
+            }).then(({
+                data
+            }) => {
                 console.log('校验结果：', data)
                 if (data.status === 0) {
                     $store.commit('logout');

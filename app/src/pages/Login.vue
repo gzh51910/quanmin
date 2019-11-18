@@ -146,12 +146,17 @@ export default {
           message,
           center: true
         });
-        let user = data.data[0];
+        let user = data.data[0]
+        console.log(user);
         
         // 从响应头中获取Authorization
         user.Authorization = headers.authorization;
+        console.log("loginvue","user",user);
 
         this.$store.commit("login", user);
+
+
+
         this.$router.push("/loginsucess");
       } else {
         console.log("no");
