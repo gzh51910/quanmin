@@ -47,10 +47,7 @@ const router = new VueRouter({
             meta: {
                 requiresAuth: true
             }
-
         },
-
-       
         {
             name: 'sort',
             path: '/sort',
