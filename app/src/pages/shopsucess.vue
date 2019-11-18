@@ -4,13 +4,14 @@
       <shopselect />
     </section>
     <el-row>
-      <el-col :span="11" v-for="item in list" :key="item.src">
+      <el-col :span="11" v-for="item in shoplist" :key="item.src">
         <el-card :body-style="{ padding: '0' }">
-          <img :src="item.src" class="image" />
+          <img :src="item.imgsrc" class="image" />
           <div style="padding: vw(20);">
-            <span class="title">好吃的汉堡</span>
+            <P class="title">{{item.name}}</P>
+            <P class="desc">{{item.desc}}</P>
             <div class="bottom clearfix">
-              <span class="price">{{ price }}</span>
+              <span class="price">{{ item.price }}</span>
               <span class="sale">已售20件</span>
             </div>
           </div>
@@ -21,50 +22,13 @@
 </template>
 <script>
 import shopselect from "../pages/shopselect.vue";
+import { local } from "../Api";
 export default {
   data() {
     return {
-      price: `¥11`,
-      list: [
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        },
-        {
-          src:
-            "http://pic.quanmingwang.com/shop/pic/common/n5zj1PIack_20190102_!!51207.jpg_520x390.jpg"
-        }
-      ],
+      shoplist: [],
       list2: [],
-
+      shoplist222: [],
       imgstring: "http://localhost:1910/img/"
     };
   },
@@ -73,20 +37,23 @@ export default {
     shopselect
   },
   async created() {
-    let {
-      data: { data }
-    } = await this.$axios.get("http://localhost:1910/home");
-    let m = data.mainbanner;
-    // this.getImg(m);
-    // console.log(data);
+    let { type } = this.$route.query;
+    await this.getdata(type);
+
+    //  let a= data.data.map((ele,index)=>{
+
+    //   }
+    // this.shoplist.push()
   },
   methods: {
-    // getImg(o) {
-    //   for (let key in o) {
-    //     o[key].imgsrc = this.imgstring + o[key].imgsrc;
-    //   }
-    //   this.list2 = o;
-    // }
+    async getdata(type, page) {
+      let { data } = await local.get("goods", { type, page });
+      console.log(data);
+      data.data.forEach(ele => {
+        this.shoplist.push(ele);
+      });
+      console.log("shoplist", this.shoplist);
+    }
   }
 };
 </script>
@@ -98,15 +65,23 @@ export default {
   margin-left: vw(30);
   width: 100%;
   .title {
-    font-size: vw(10);
+    font-size: vw(26);
     color: #000;
+  }
+  .desc {
+    font-size: vw(18);
+    color: #000;
+    overflow: hidden;
+text-overflow:  ellipsis;
+display:  -webkit-box;
+-webkit-line-clamp:  2;
+-webkit-box-orient:  vertical
   }
 
   .bottom {
     width: 100%;
     border-top: 1px dashed #ccc;
     height: vw(80);
-    margin-top: vw(40);
     line-height: vw(20);
     .price {
       line-height: vw(80);

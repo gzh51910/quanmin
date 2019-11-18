@@ -28,7 +28,7 @@ console.log(type,page,pagesize);
     let index = (page - 1) * pagesize
     // let type="地板"
     // mongodb查询数据库
-    let data = await mongodb.find(colName,{type:"地板"},{skip:index,limit:pagesize});
+    let data = await mongodb.find(colName,{type},{skip:index,limit:pagesize});
     // let data = await mongodb.find(colName,{type});
     res.send(formatData({data}))
 

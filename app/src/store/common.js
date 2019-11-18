@@ -11,7 +11,6 @@ export default {
     state:{
         // 用户信息
         user
-
     },
     mutations:{
         login(state,user){
