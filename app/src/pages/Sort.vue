@@ -14,7 +14,7 @@
             v-for="e in item.datalist"
             :key="e.type"
             align="center"
-            @click.native="sortjump"
+            @click.native="sortjump(e.type)"
           >
             <el-image
               style="width:75px; height:75px; margin:20px 10px 0"
@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       tabPosition: "left",
-      sortList: []
+      sortList: [],
+      imgString: "http://localhost:1910/img/"
     };
   },
   methods: {
@@ -46,10 +47,16 @@ export default {
       // 发送请求拿数据
       let { data } = await this.$axios.get("http://localhost:1910/home/sorts");
       this.sortList = data.data;
-      console.log(data.data);
+      for (let i = 0; i < this.sortList.length; i++) {
+        for (let j = 0; j < this.sortList[i].datalist.length; j++) {
+          this.sortList[i].datalist[
+            j
+          ].imgsrc = `${this.imgString}${this.sortList[i].datalist[j].imgsrc}`;
+        }
+      }
     },
-    sortjump() {
-      this.$router.push("/shopsucess");
+    sortjump(type) {
+    this.$router.push({name:'shopsucess',params:{type},query:{type}})
     }
   },
   created() {
