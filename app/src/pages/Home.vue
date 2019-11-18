@@ -320,32 +320,31 @@ export default {
         {
           src:"http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg",
           num:1
-
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/s8nkNzU0Mc_20180329_!!89315.jpg",
-          num:1
+          num:5
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/9VqPNQhbvk_20180329_!!79269.jpg",
-          num:1
+          num:6
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/1OHyOqaKg3_20180329_!!76066.jpg",
-          num:1
+          num:7
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/3rpwFyMngd_20180416_!!10252.jpg",
-          num:1
+          num:2
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg",
-          num:1
+          num:3
         }
       ],
       todayRecommended: {}, //今日推荐
