@@ -57,6 +57,7 @@ export default {
   },
   methods: {
     backshop(type) {
+      let type = this.type
       this.$router.push({ name: "shopsucess", query: { type } });
     },
     // 加入到购物车
