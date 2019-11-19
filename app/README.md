@@ -6,7 +6,7 @@
 
 * 官网：<http://m.quanmingwang.com/index/index.html>
 
-* 上线网址:<http://121.199.11.112:8011>
+* 上线网址:<>
 
 * 后台管理网址:<http://121.199.11.112:8010>
 
@@ -27,11 +27,11 @@
 
 ### 首页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E9%A6%96%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E9%A6%96%E9%A1%B5.png)
 
 ### 列表页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E5%88%97%E8%A1%A8%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8%E9%A1%B5.png)
 
 ### 详情页
 
@@ -39,23 +39,23 @@
 
 ### 购物车
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E8%B4%AD%E7%89%A9%E8%BD%A6.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%A1%B5%E9%9D%A2.png)
 
 ### 个人页
 
-* ![Image text](hthttps://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E4%B8%AA%E4%BA%BA.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2.png)
 
-### 注册页
+### 注册登录页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E6%B3%A8%E5%86%8C%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E9%A1%B5.png)
 
-### 登录页
+### 商务合作页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E7%99%BB%E5%BD%95%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E5%95%86%E5%8A%A1%E5%90%88%E4%BD%9C%E9%A1%B5.png)
 
 ### 分类列表页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E5%88%86%E7%B1%BB%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E5%88%86%E7%B1%BB%E9%A1%B5.png)
 
 ## 项目目录说明
 
