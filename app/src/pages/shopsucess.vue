@@ -5,8 +5,7 @@
     </section>
     <el-row v-infinite-scroll="load">
       <el-col :span="12" v-for="item in shoplist" :key="item.id">
-        <el-card :body-style="{ padding: '0' }"
-        @click.native="getgoodsdetail(item.id,item.type)">
+        <el-card :body-style="{ padding: '0' }" @click.native="getgoodsdetail(item.id,item.type)">
           <img :src="item.imgsrc" class="image" />
           <div style="padding: vw(20);">
             <P class="title">{{item.name}}</P>
@@ -18,7 +17,6 @@
           </div>
         </el-card>
       </el-col>
-    
     </el-row>
   </div>
 </template>
@@ -30,14 +28,14 @@ export default {
     return {
       shoplist: [],
       imgstring: "http://localhost:1910/img/",
-      page: 0,
+      page: 0
     };
   },
 
   components: {
     shopselect
   },
-  
+
   methods: {
     async getdata(type, page) {
       let { data } = await local.get("goods", { type, page });
@@ -52,19 +50,18 @@ export default {
       console.log(this.page);
     },
     // 跳转商品详情
-    getgoodsdetail(id,type){
+    getgoodsdetail(id, type) {
       this.$router.push({
         name: "goodsdetail",
         params: { id },
-        query: { id,type}
+        query: { id, type }
       });
     }
   },
-  created(){
-      // let { type } = this.$route.query;
-      console.log(this.$route.query);
-      // this.getdata(type)
-
+  created() {
+    // let { type } = this.$route.query;
+    console.log(this.$route.query);
+    // this.getdata(type)
   }
 };
 </script>
