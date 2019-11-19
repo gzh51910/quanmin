@@ -89,7 +89,6 @@ const router = new VueRouter({
             path: '/shopsucess',
             component: Shopsucess,
         },
-
     ]
 });
 

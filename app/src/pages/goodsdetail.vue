@@ -56,8 +56,13 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     backshop() {
       let type =this.type
+=======
+    backshop(type) {
+      let type = this.type
+>>>>>>> da73994cc103c391c6f23b8b1c7791311e1ea07e
       this.$router.push({ name: "shopsucess", query: { type } });
     },
     // 加入到购物车
