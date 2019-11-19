@@ -52,7 +52,8 @@ export default {
   },
   methods: {
     backshop() {
-      this.$router.push("/shopsucess");
+      let type =this.type
+      this.$router.push({name:"shopsucess",query:{type}});
     }
   }
 };
