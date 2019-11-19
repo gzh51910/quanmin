@@ -46,10 +46,11 @@ export default {
       // 发送请求拿数据
       let { data } = await this.$axios.get("http://localhost:1910/home/sorts");
       this.sortList = data.data;
-      console.log(data.data);
+      // console.log(data.data);
     },
     sortjump() {
-      this.$router.push("/shopsucess");
+      // this.$router.push("/shopsucess");
+      this.$router.push("/goodsSortList");
     }
   },
   created() {

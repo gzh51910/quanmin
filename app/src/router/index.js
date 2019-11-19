@@ -21,6 +21,7 @@ import Goodsdetail from '../pages/goodsdetail.vue'
 import Shopfail from '../pages/shopfail.vue';
 import Shopsucess from '../pages/shopsucess.vue';
 import Cartbought from '../pages/cartbought.vue';
+import GoodsSortList from '../pages/goodsSortList.vue';
 
 
 
@@ -112,6 +113,11 @@ const router = new VueRouter({
             path: '/cartbought',
             component: Cartbought,
         },
+        {
+            name: 'goodsSortList',
+            path: '/goodsSortList',
+            component: GoodsSortList,
+        }
     ]
 });
 
