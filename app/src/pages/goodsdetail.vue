@@ -11,8 +11,7 @@
       <!-- 轮播图 -->
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="(ele,idx) in banner" :key="idx">
-          <img :src="ele" alt="">
-
+          <img :src="ele" alt />
         </el-carousel-item>
       </el-carousel>
       <div>
@@ -27,16 +26,16 @@
         </p>
       </div>
       <el-button-group class="sumcar">
-        <el-button type="danger" icon="el-icon-shopping-cart-2">加入购物车</el-button>
+        <el-button type="danger" icon="el-icon-shopping-cart-2" @click="add2cart">加入购物车</el-button>
       </el-button-group>
-      <h3 class="tuijian">为您推荐</h3>
+      <!-- <h3 class="tuijian">为您推荐</h3>
       <el-row :gutter="20">
         <el-col :xs="8" :sm="6" :md="4" :lg="3">
           <img />
           <h4>陶瓷全国大理石</h4>
           <p>¥49</p>
         </el-col>
-      </el-row>
+      </el-row>-->
     </div>
   </div>
 </template>
@@ -52,24 +51,52 @@ export default {
       menu: ["商品", "评价", "详情", "推荐"],
       banner: [],
       desc: "",
-      price: ""
+      price: "",
+      imgsrc: ""
     };
   },
   methods: {
     backshop(type) {
       this.$router.push({ name: "shopsucess", query: { type } });
     },
+    // 加入到购物车
+    add2cart() {
+      console.log(this.id);
+      // 判断当前商品是否已经存在购物车;
+      let { goodslist } = this.$store.state;
+      let current = goodslist.filter(item => item.id === this.id)[0];
+      console.log("current", current);
+      if (current) {
+        this.$store.commit("changeQty", { id: this.id, qty: current.qty + 1 });
+      } else {
+        let id = this.id;
+        let name = this.desc;
+        let imgurl = this.imgsrc;
+        let price = this.price;
+
+        let goods = {
+          id,
+          imgurl,
+          name,
+          price,
+          qty: 1
+        };
+        // console.log(goods);
+        this.$store.commit("addtocart", goods);
+        // this.$router.push("/cart");
+      }
+    },
     // 拿数据
     async getdata(id) {
       let { data } = await local.get(`goods/${id}`);
       console.log("getdata", data);
       this.banner = data.data[0].commons;
+      this.imgsrc = data.data[0].commons[0];
       this.desc = data.data[0].desc;
       this.price = data.data[0].price;
       this.id = data.data[0].id;
       console.log("getdata", data.data[0].commons);
       console.log(this.id);
-      
     }
   },
   // 渲染
@@ -77,7 +104,6 @@ export default {
     // console.log(this.$route);
     let { type, id } = this.$route.query;
     this.getdata(id);
-    
   }
 };
 </script>

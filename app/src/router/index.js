@@ -42,18 +42,11 @@ const router = new VueRouter({
         {
             name: 'cart',
             path: '/cart',
-<<<<<<< HEAD
-            component: Cart
-        },
-
-
-=======
             component: Cart,
             meta: {
                 requiresAuth: true
             }
         },
->>>>>>> 0506c44cf407cfdb18758a3c987fe8b8b03173fe
         {
             name: 'sort',
             path: '/sort',

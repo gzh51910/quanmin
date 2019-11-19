@@ -16,14 +16,14 @@ let store = new Vuex.Store({
             price: 5998,
             qty: 10
         },
-        {
-            id: "2",
-            name: "xiaomi9",
-            imgurl:
-                "http://pic.quanmingwang.com/shop/pic/common/XsiEGoRG1W_20181116_!!38634.jpg",
-            price: 2999,
-            qty: 2
-        },
+        // {
+        //     id: "2",
+        //     name: "xiaomi9",
+        //     imgurl:
+        //         "http://pic.quanmingwang.com/shop/pic/common/XsiEGoRG1W_20181116_!!38634.jpg",
+        //     price: 2999,
+        //     qty: 2
+        // },
         {
             id: "3",
             name: "onePlus9 pro",
@@ -55,9 +55,9 @@ let store = new Vuex.Store({
             })
         }
     },
-    modules:{
+    modules: {
         common
-      }
+    }
 })
 // 4.导出
 export default store;
