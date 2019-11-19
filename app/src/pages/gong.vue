@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     rightFixed(index) {
-      console.log(index);
       let topVal = $(".rightFixed" + index).offset().top - 50;
       $("body,html").animate({ scrollTop: topVal }, 1000);
     },
@@ -43,7 +42,6 @@ export default {
     },
     myScroll() {
       this.bodyScroll = $(window).scrollTop();
-      // console.log(this.bodyScroll);
       let fixedLi = $(".FloorNavigation ul li");
       let goTopButton = $(".goTop");
       let right_0 = $(".rightFixed0").offset().top,

@@ -62,11 +62,9 @@ export default {
     },
     // 加入到购物车
     add2cart() {
-      console.log(this.id);
       // 判断当前商品是否已经存在购物车;
       let { goodslist } = this.$store.state;
       let current = goodslist.filter(item => item.id === this.id)[0];
-      console.log("current", current);
       if (current) {
         this.$store.commit("changeQty", { id: this.id, qty: current.qty + 1 });
       } else {
@@ -82,28 +80,22 @@ export default {
           price,
           qty: 1
         };
-        // console.log(goods);
         this.$store.commit("addtocart", goods);
-        // this.$router.push("/cart");
       }
     },
     // 拿数据
     async getdata(id) {
       let { data } = await local.get(`goods/${id}`);
-      console.log("getdata", data);
       this.banner = data.data[0].commons;
       this.imgsrc = data.data[0].commons[0];
       this.desc = data.data[0].desc;
       this.price = data.data[0].price;
       this.id = data.data[0].id;
       this.type = data.data[0].type;
-      console.log("getdata", data.data[0].commons);
-      console.log(this.id);
     }
   },
   // 渲染
   created() {
-    // console.log(this.$route);
     let { type, id } = this.$route.query;
     this.getdata(id);
   }

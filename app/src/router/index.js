@@ -22,10 +22,9 @@ import {
     local
 } from '../Api'
 
-
 //3.实例化VueRouter并配置参数
 const router = new VueRouter({
-    // mode:'history',//hash(默认)
+    mode:'history',//hash(默认)
     routes: [
         //当浏览器地址为/home时，显示Home组件的内容，显示在，<router-view/>组件中
         {
@@ -101,8 +100,6 @@ router.beforeEach((to, from, next) => {
         // let Authorization = localStorage.getItem('Authorization');
         let $store = router.app.$store
         let Authorization = $store.state.common.user.Authorization;
-        console.log("Authorization", Authorization);
-
         if (Authorization) {
             // 登录则放行
             next();
@@ -112,8 +109,6 @@ router.beforeEach((to, from, next) => {
                 headers: {
                     Authorization
                 }
-
-
             }).then(({
                 data
             }) => {
@@ -141,7 +136,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next();
     }
-    console.log('全局.beforeEach');
 })
 //4.导出Router实例，把router实例注入到vue实例中
 export default router;

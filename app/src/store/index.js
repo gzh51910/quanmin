@@ -8,30 +8,7 @@ Vue.use(Vuex);
 // 3.实例化一个store
 let store = new Vuex.Store({
     state: {
-        goodslist: [{
-            id: "1",
-            name: "huawei mate30 pro",
-            imgurl:
-                "http://pic.quanmingwang.com/shop/pic/common/Qu29kWhLnD_20180509_!!61324.jpg",
-            price: 5998,
-            qty: 10
-        },
-        // {
-        //     id: "2",
-        //     name: "xiaomi9",
-        //     imgurl:
-        //         "http://pic.quanmingwang.com/shop/pic/common/XsiEGoRG1W_20181116_!!38634.jpg",
-        //     price: 2999,
-        //     qty: 2
-        // },
-        {
-            id: "3",
-            name: "onePlus9 pro",
-            imgurl:
-                "http://pic.quanmingwang.com/shop/pic/common/71nbKuhtyI_20181115_!!18389.jpg",
-            price: 3999,
-            qty: 1
-        }]
+        goodslist: []
     },
     mutations: {
         // 删除单个商品
