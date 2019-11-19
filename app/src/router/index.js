@@ -104,7 +104,7 @@ router.beforeEach((to, from, next) => {
             next();
 
             // 发送校验请求
-            router.app.$axios.get('http://localhost:1910/verify', {
+            router.app.$axios.get('http://120.76.130.35:3435/verify', {
                 headers: {
                     Authorization
                 }

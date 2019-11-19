@@ -52,16 +52,11 @@ export default {
 
   data() {
     return {
-      imgString: "http://localhost:1910/img/",
-      
+      imgString: "http://120.76.130.35:3435/img/",
     };
   },
   watch: {
-    // num:(newVal,oldVal)=>{
-    // console.log("新："+newVal+"旧："+oldVal);
-    // let {data:{data}} = this.$axios.get("http://localhost:1910/fenye?index=1");
-    // console.log("数据"+data);
-    // }
+
   },
   methods: {
     

@@ -229,6 +229,7 @@
 </template>
 <script>
 // import axios from "axios";
+import {local} from '../Api'
 import menulist from "./Menu.vue";
 import footernav from "../pages/footernav.vue";
 export default {
@@ -237,7 +238,7 @@ export default {
       activeIndex: "0",
       num: 0,
       showMSg: [],
-      imgString: "http://localhost:1910/img/",
+      imgString: "http://120.76.130.35:3435/img/",
       // activeIndex2: "/home",
       menu: [
         {
@@ -427,7 +428,7 @@ export default {
     async getMenu(index) {
       let {
         data: { data }
-      } = await this.$axios.get("http://localhost:1910/home/fenye", {
+      } = await local.get("/home/fenye", {
         params: { index }
       });
       this.showMSg = data[0];
@@ -529,7 +530,7 @@ export default {
       this.play();
       let {
         data: { data }
-      } = await this.$axios.get("http://localhost:1910/home");
+      } = await local.get("/home");
       let m = data[0].mainbanner; //轮播图
       let t = data[0].ten_class; //选择
       let d = data[0].todayRecommended;

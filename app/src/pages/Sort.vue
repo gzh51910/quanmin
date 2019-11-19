@@ -21,7 +21,7 @@
               :src="e.imgsrc"
               fit="cover"
             ></el-image>
-            <span style="font-size: 12px;">{{e.type}}</span>
+            <p style="font-size: 12px;">{{e.type}}</p>
           </el-col>
         </el-row>
       </el-tab-pane>
@@ -30,6 +30,7 @@
 </template>
 <script>
 import search from "../pages/search.vue";
+import { local } from '../Api';
 export default {
   components: {
     search
@@ -39,13 +40,13 @@ export default {
     return {
       tabPosition: "left",
       sortList: [],
-      imgString: "http://localhost:1910/img/"
+      imgString: "http://120.76.130.35:3435/img/"
     };
   },
   methods: {
     async getSortList() {
       // 发送请求拿数据
-      let { data } = await this.$axios.get("http://localhost:1910/home/sorts");
+      let { data } = await local.get("/home/sorts");
       this.sortList = data.data;
       for (let i = 0; i < this.sortList.length; i++) {
         for (let j = 0; j < this.sortList[i].datalist.length; j++) {

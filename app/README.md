@@ -6,9 +6,9 @@
 
 * 官网：<http://m.quanmingwang.com/index/index.html>
 
-* 上线网址:<>
+* 上线网址:<http://120.76.130.35:3435>
 
-* 后台管理网址:<http://121.199.11.112:8010>
+* 后台管理网址:<http://120.76.130.35:1910>
 
 ## git仓库地址:https://github.com/gzh51910/quanmin.git
 ## 团队与分工
@@ -35,7 +35,7 @@
 
 ### 详情页
 
-* ![Image text](https://github.com/gzh51910/ChaWo/blob/dev/ChaWo/chawo/src/img/%E8%AF%A6%E6%83%85%E9%A1%B5.png)
+* ![Image text](https://github.com/gzh51910/quanmin/blob/dev/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5.png)
 
 ### 购物车
 
@@ -59,27 +59,31 @@
 
 ## 项目目录说明
 
-├─Api                   //接口文件夹
-│   └─src
-│       ├─db
-│       ├─routers
-│       └─utils
-├─chawo                 //前端文件夹
+
+├─app                 //前端文件夹
 │  ├─public
 │  └─src
-│      ├─api            //接口文件夹
+│      ├─Api            //接口文件夹
 │      ├─assets
 │      ├─components     //分类列表和脚部
-│      ├─img            //页面截图
+│      ├─img             //图片
 │      ├─pages          //页面
-│      ├─routers        //路由
+│      ├─iconfont       //字体图标
+│      ├─router        //路由
 │      └─store
-└─chawomanage           //后台管理文件夹
-    ├─public
-    └─src
-        ├─assets
-        ├─components
-        ├─pages         //页面
-        ├─route         //路由
-        ├─routers       //路由
-        └─utils         //token
+├─wms1.0           //后台管理文件夹
+│    ├─public
+│    └─src
+│       ├─assets 
+│       ├─components
+│       ├─routers       //路由
+│       └─views        //页面
+│
+│
+││─server
+│  └─src
+│      ├─db           //接口文件夹
+│      ├─img          //存放图片文件夹
+│      ├─routers      //分类列表和脚部
+│      ├─utils         //token
+│     
