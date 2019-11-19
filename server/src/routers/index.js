@@ -1,7 +1,7 @@
 const express = require('express');
 
 let Router = express.Router();
-
+const {token,formatData} = require('../utils')
 let loginRouter = require('./login');
 let goodsRouter = require('./goods');
 let homeRouter = require('./home');
@@ -13,7 +13,7 @@ Router.use((req,res,next)=>{
     // 支持CORS跨域，只需要设置响应头
     res.header('Access-Control-Allow-Origin','*');
     let currentOrigin = req.get('Origin');
-    let allowOrigin = ['http://10.3.136.139:1910','http://localhost:8080']
+    let allowOrigin = ['http://10.3.136.139:1910','http://localhost:8080','http://localhost:8081','http://localhost:8082','http://localhost:8083']
     if(allowOrigin.includes(currentOrigin)){
         res.set({
             'Access-Control-Allow-Origin':currentOrigin,
@@ -45,7 +45,11 @@ Router.use('/login',loginRouter)
 // token验证
 Router.get('/verify',(req,res)=>{
     // 获取请求头上的token
+    console.log("verify","成功");
+    
     let Authorization = req.get('Authorization');
+    console.log(Authorization);
+    
     if(token.verify(Authorization)){
         res.send(formatData())
     }else{

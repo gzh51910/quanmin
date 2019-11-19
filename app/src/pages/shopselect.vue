@@ -5,7 +5,7 @@
         <img src="../img/back.png" class="back" @click="bb" />
       </el-col>
       <el-col :xs="16" :sm="6" :md="4" :lg="3" :xl="1">
-        <el-input placeholder="搜索商家、品类或商圈" prefix-icon="el-icon-search" v-model="input2"></el-input>
+        <el-input placeholder="搜索商家、品类或商圈" prefix-icon="el-icon-search" v-model="input"></el-input>
       </el-col>
 
       <el-col :xs="3" :sm="6" :md="4" :lg="3" :xl="1">
@@ -43,7 +43,7 @@ export default {
         { name: "4", text: "热卖" },
         { name: "5", text: "特价" },
         { name: "6", text: "筛选" }
-      ]
+      ],input:""
     };
   },
   methods: {

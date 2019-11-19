@@ -21,7 +21,7 @@ Router.get('/', async (req, res) => {
     // 语句：find().skip(index).litmit(size)
     
     let {
-        page=1, pagesize = 10, type
+        page=1, pagesize = 8, type
     } = req.query;
 console.log(type,page,pagesize);
     // 根据分页和每页数量计算跳过的索引值
@@ -63,12 +63,20 @@ Router.delete('/:id',async (req,res)=>{
 Router.get('/:id',async(req,res)=>{
     
     let {id} = req.params;
-    console.log(typeof(id));
+    // console.log(typeof(id));
     // 查询数据：
-     // 看数据库的id是否为数字  id=id*1
+    //  看数据库的id是否为数字  id=id*1
 
     let data = await mongodb.find(colName,{id});
+    // if (data.data) {
+console.log(data);
+if (data.length>0) {
     res.send(formatData({data}))
+}else{
+    id=id*1
+     data = await mongodb.find(colName,{id});
+}
+res.send(formatData({data}))
 })
 
 

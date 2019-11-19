@@ -1,7 +1,6 @@
 <template>
   <footer>
     <el-menu
-      :default-active="activeIndex2"
       class="el-menu-demo"
       mode="horizontal"
       background-color="#f0f0f0"
@@ -27,6 +26,7 @@
 export default {
   data() {
     return {
+      activeIndex2: "/home",
       footernav: [
         {
           name: "home",
@@ -49,14 +49,21 @@ export default {
         {
           name: "cart",
           path: "/cart",
-          text: "购物车"
+          text: "购物车",
+          // 测试
+           meta: {
+                requiresAuth: true
+            }
           // icon: "iconfont icongouwuche"
         },
         {
-          name: "login",
-          path: "/login",
+          name: "loginsucess",
+          path: "/loginsucess",
           text: "我的",
-          icon: "iconfont iconwode"
+          icon: "iconfont iconwode",
+           meta: {
+                requiresAuth: true
+            }
         }
       ]
     };

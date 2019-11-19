@@ -6,23 +6,26 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../pages/Home.vue';
-import Reg from '../pages/Reg.vue';
 import Login from '../pages/Login.vue';
-import Mine from '../pages/Mine.vue';
 import Cart from '../pages/Cart.vue';
-import List from '../pages/List.vue';
-import Goods from '../pages/Goods.vue';
 import Sort from '../pages/Sort.vue';
 import Hezuo from '../pages/Hezuo';
 import Loginagument from '../pages/loginagument.vue';
 import Loginsucess from '../pages/loginsucess.vue';
-import Menu from '../pages/Menu.vue';
 import Goodsdetail from '../pages/goodsdetail.vue'
 import Shopfail from '../pages/shopfail.vue';
 import Shopsucess from '../pages/shopsucess.vue';
+<<<<<<< HEAD
 import Cartbought from '../pages/cartbought.vue';
 import GoodsSortList from '../pages/goodsSortList.vue';
+=======
+>>>>>>> 4ceca259a178a4e3fddf99b28d3df0b5523a0ac3
 
+
+// 引入Api
+import {
+    local
+} from '../Api'
 
 
 //3.实例化VueRouter并配置参数
@@ -36,34 +39,18 @@ const router = new VueRouter({
             component: Home
         },
         {
-            name: 'reg',
-            path: '/reg',
-            component: Reg
-        },
-        {
             name: 'login',
             path: '/login',
             component: Login
         },
-        {
-            name: 'mine',
-            path: '/mine',
-            component: Mine
-        },
+
         {
             name: 'cart',
             path: '/cart',
-            component: Cart
-        },
-        {
-            name: 'list',
-            path: '/list',
-            component: List
-        },
-        {
-            name: 'goods',
-            path: '/goods',
-            component: Goods
+            component: Cart,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             name: 'sort',
@@ -84,15 +71,15 @@ const router = new VueRouter({
             name: 'loginagument',
             path: '/loginagument',
             component: Loginagument,
+
         },
         {
             name: 'loginsucess',
             path: '/loginsucess',
             component: Loginsucess,
-        }, {
-            name: 'menu',
-            path: '/menu',
-            component: Menu
+            meta: {
+                requiresAuth: true
+            }
         }, {
             name: 'goodsdetail',
             path: '/goodsdetail',
@@ -108,18 +95,57 @@ const router = new VueRouter({
             path: '/shopsucess',
             component: Shopsucess,
         },
-        {
-            name: 'cartbought',
-            path: '/cartbought',
-            component: Cartbought,
-        },
-        {
-            name: 'goodsSortList',
-            path: '/goodsSortList',
-            component: GoodsSortList,
-        }
     ]
 });
 
+// 全局路由守卫
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth) {
+        // 获取token
+        // let Authorization = localStorage.getItem('Authorization');
+        let $store = router.app.$store
+        let Authorization = $store.state.common.user.Authorization;
+        console.log("Authorization", Authorization);
+
+        if (Authorization) {
+            // 登录则放行
+            next();
+
+            // 发送校验请求
+            router.app.$axios.get('http://localhost:1910/verify', {
+                headers: {
+                    Authorization
+                }
+
+
+            }).then(({
+                data
+            }) => {
+                console.log('校验结果：', data)
+                if (data.status === 0) {
+                    $store.commit('logout');
+                    next({
+                        path: '/login',
+                        query: {
+                            redirectUrl: to.fullPath
+                        }
+                    })
+                }
+            })
+        } else {
+            // 否则跳到登录页面
+            // router.push('/login')
+            next({
+                path: '/login',
+                query: {
+                    redirectUrl: to.fullPath
+                }
+            })
+        }
+    } else {
+        next();
+    }
+    console.log('全局.beforeEach');
+})
 //4.导出Router实例，把router实例注入到vue实例中
 export default router;
