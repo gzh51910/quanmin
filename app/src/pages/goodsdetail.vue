@@ -1,7 +1,7 @@
 <template >
   <div>
     <div id="detailhead">
-      <img src="../img/back.png" @click="backshop" />
+      <img src="../img/back.png" @click="backshop()" />
       <ul>
         <li v-for="item in menu" :key="item">{{item}}</li>
       </ul>
@@ -56,7 +56,8 @@ export default {
     };
   },
   methods: {
-    backshop(type) {
+    backshop() {
+      let type =this.type
       this.$router.push({ name: "shopsucess", query: { type } });
     },
     // 加入到购物车
@@ -95,6 +96,7 @@ export default {
       this.desc = data.data[0].desc;
       this.price = data.data[0].price;
       this.id = data.data[0].id;
+      this.type = data.data[0].type;
       console.log("getdata", data.data[0].commons);
       console.log(this.id);
     }
