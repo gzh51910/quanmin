@@ -39,7 +39,7 @@ const router = new VueRouter({
             path: '/login',
             component: Login
         },
-     
+
         {
             name: 'cart',
             path: '/cart',
@@ -47,10 +47,7 @@ const router = new VueRouter({
             meta: {
                 requiresAuth: true
             }
-
         },
-
-       
         {
             name: 'sort',
             path: '/sort',
@@ -109,7 +106,7 @@ router.beforeEach((to, from, next) => {
         // let Authorization = localStorage.getItem('Authorization');
         let $store = router.app.$store
         let Authorization = $store.state.common.user.Authorization;
-        console.log("Authorization",Authorization);
+        console.log("Authorization", Authorization);
 
         if (Authorization) {
             // 登录则放行
@@ -120,8 +117,8 @@ router.beforeEach((to, from, next) => {
                 headers: {
                     Authorization
                 }
-              
-                
+
+
             }).then(({
                 data
             }) => {
