@@ -16,34 +16,10 @@
 
       <div class="second">
         <el-row :gutter="12">
-          <el-col :span="4.2">
+          <el-col :span="4.2" v-for="ele in toplist" :key="ele.title">
             <div class="grid-content bg-purple">
-              <i class="el-icon-goods" style=" color:red;"></i>
-              <p class="ff">待付款</p>
-            </div>
-          </el-col>
-          <el-col :span="4.2">
-            <div class="grid-content bg-purple">
-              <i class="el-icon-suitcase-1" style=" color: red;"></i>
-              <p class="ff">待收货</p>
-            </div>
-          </el-col>
-          <el-col :span="4.2">
-            <div class="grid-content bg-purple">
-              <i class="el-icon-chat-dot-square" style=" color: red;"></i>
-              <p class="ff">待评价</p>
-            </div>
-          </el-col>
-          <el-col :span="4.2">
-            <div class="grid-content bg-purple">
-              <i class="el-icon-coin" style=" color: red;"></i>
-              <p class="ff">退货/售后</p>
-            </div>
-          </el-col>
-          <el-col :span="4.2">
-            <div class="grid-content bg-purple">
-              <i class="el-icon-bank-card" style=" color: red;"></i>
-              <p class="ff">全部订单</p>
+              <i :class="ele.i" style=" color:red;"></i>
+              <p class="ff">{{ele.title}}</p>
             </div>
           </el-col>
         </el-row>
@@ -52,34 +28,10 @@
     <div class="third">
       <div>
         <el-row class="fenqi">
-          <el-col :span="24">
+          <el-col :span="24" v-for="item in mylist" :key="item.title">
             <div class="grid-content bg-purple-dark">
-              <i class="el-icon-tickets" style="color:black"></i>
-              我的分期审核
-            </div>
-          </el-col>
-          <el-col :span="24">
-            <div class="grid-content bg-purple-dark">
-              <i class="el-icon-brush" style="color:black"></i>
-              我的贷款
-            </div>
-          </el-col>
-          <el-col :span="24">
-            <div class="grid-content bg-purple-dark">
-              <i class="el-icon-location-information" style="color:black"></i>
-              收货地址
-            </div>
-          </el-col>
-          <el-col :span="24">
-            <div class="grid-content bg-purple-dark">
-              <i class="el-icon-lock" style="color:black"></i>
-              账号安全
-            </div>
-          </el-col>
-          <el-col :span="24">
-            <div class="grid-content bg-purple-dark">
-              <i class="el-icon-potato-strips" style="color:black"></i>
-              分店管理
+              <i :class="item.i" style="color:black"></i>
+              {{item.title}}
             </div>
           </el-col>
         </el-row>
@@ -98,7 +50,47 @@ import footernav from "../pages/footernav.vue";
 export default {
   data(){
     return{
-        userName:""
+        userName:"",
+        mylist:[
+          {
+            title:'我的分期审核',
+            i:'el-icon-tickets'
+          },
+          {
+            title:'我的贷款',
+            i:'el-icon-brush'
+          },
+          {
+            title:'收货地址',
+            i:'el-icon-location-information'
+          },{
+            title:'账号安全',
+            i:'el-icon-lock'
+          }
+          ,{
+            title:'分店管理',
+            i:'el-icon-potato-strips'
+          }
+        ],
+        toplist:[
+          {
+            title:"待付款",
+            i:"el-icon-goods"
+          },
+         {
+            title:"待收货",
+            i:"el-icon-suitcase-1"
+          }, {
+            title:"待评价",
+            i:"el-icon-chat-dot-square"
+          }, {
+            title:"退货/售后",
+            i:"el-icon-coin"
+          }, {
+            title:"全部订单",
+            i:"el-icon-bank-card"
+          },
+        ]
     }
   },
   components: {

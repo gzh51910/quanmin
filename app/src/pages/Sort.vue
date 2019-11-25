@@ -40,7 +40,6 @@ export default {
     return {
       tabPosition: "left",
       sortList: [],
-      imgString: "http://120.76.130.35:3435/img/"
     };
   },
   methods: {
@@ -52,7 +51,7 @@ export default {
         for (let j = 0; j < this.sortList[i].datalist.length; j++) {
           this.sortList[i].datalist[
             j
-          ].imgsrc = `${this.imgString}${this.sortList[i].datalist[j].imgsrc}`;
+          ].imgsrc = `${local.imgString}${this.sortList[i].datalist[j].imgsrc}`;
         }
       }
     },

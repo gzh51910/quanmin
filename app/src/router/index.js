@@ -102,9 +102,9 @@ router.beforeEach((to, from, next) => {
         if (Authorization) {
             // 登录则放行
             next();
-
+            let url=`${local.baseURL}/verify`
             // 发送校验请求
-            router.app.$axios.get('http://120.76.130.35:3435/verify', {
+            router.app.$axios.get(url, {
                 headers: {
                     Authorization
                 }

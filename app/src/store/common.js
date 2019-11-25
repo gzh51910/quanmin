@@ -1,6 +1,10 @@
 // Vuex的数据，刷新后会消息
 // 所以刷新后先获取本地存储的数据
 let user = localStorage.getItem('user');// {Authorization,username...},'xxxx'
+
+import {
+    local
+} from '../Api'
 try{
     user = JSON.parse(user) || {};
 }catch(err){
@@ -10,7 +14,8 @@ try{
 export default {
     state:{
         // 用户信息
-        user
+        user,
+        port:local.imgString
     },
     mutations:{
         login(state,user){

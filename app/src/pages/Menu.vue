@@ -12,18 +12,6 @@
             <img :src="item.imgsrc" alt />
             <span>{{item.otitle}}</span>
           </li>
-          <!-- <li>
-            <img src="http://pic.quanmingwang.com/shop/icon/rvuaQNo3Tb_20180328_!!86356.png" alt="">
-            <span>地板</span>
-          </li>
-          <li>
-            <img src="http://pic.quanmingwang.com/shop/icon/Hv2kWCbM9s_20180328_!!65015.png" alt="">
-            <span>壁纸</span>
-          </li>
-          <li>
-            <img src="http://pic.quanmingwang.com/shop/icon/gePNDbQUq2_20180328_!!13389.png" alt="">
-            <span>墙布</span>
-          </li>-->
         </nav>
         <div class="listWrap" v-for="(item,idx) in showMSg.list" :key="idx">
           <div class="oTitle1">
@@ -52,7 +40,6 @@ export default {
 
   data() {
     return {
-      imgString: "http://120.76.130.35:3435/img/",
     };
   },
   watch: {

@@ -27,7 +27,6 @@ export default {
   data() {
     return {
       shoplist: [],
-      imgstring: "http://120.76.130.35:3435/img/",
       page: 0
     };
   },

@@ -2,8 +2,10 @@ import axios from 'axios';
 
 // 创建axios实例
 // 测试的时候需要改自己的ip地址加端口1910
+const baseURL='http://120.76.130.35:3435';
+const imgString= `${baseURL}/img/`
 const local = axios.create({
-    baseURL: 'http://120.76.130.35:3435'
+    baseURL
 });
 
 function get(path,params,config={}){
@@ -19,7 +21,9 @@ function post(path,data={},config={}){
 
 export default {
     get,
-    post
+    post,
+    baseURL,
+    imgString
 }
 // 用的时候需要在组件导入
 // import {local} from '../Api'

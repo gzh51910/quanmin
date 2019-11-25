@@ -238,7 +238,7 @@ export default {
       activeIndex: "0",
       num: 0,
       showMSg: [],
-      imgString: "http://120.76.130.35:3435/img/",
+      imgString: local.imgString,
       // activeIndex2: "/home",
       menu: [
         {
