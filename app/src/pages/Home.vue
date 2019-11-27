@@ -47,7 +47,7 @@
           </el-carousel>
         </section>
         <!-- 选择 -->
-        <nav class="navlist1" v-if="ten_class.length!=0">
+        <nav class="navlist1">
           <li v-for="item in ten_class" :key="item.index" @click="choose(item.index)">
             <img :src="item.imgsrc" alt />
             {{item.title}}
@@ -61,32 +61,29 @@
         <!-- 今日推荐 -->
         <section class="navlist3">
           <div class="rTitle">
-            <img :src="todayRecommended.title.imgsrc" alt />
+            <img :src="trtitle.imgsrc"/>
           </div>
           <div class="rMain">
             <div class="rMainLeft">
-              <img v-if="todayRecommended.title.imgsrc" :src="todayRecommended.leftPIc.imgsrc" alt />
+              <img :src="trleft.imgsrc" alt />
             </div>
             <div class="rMainRight">
               <nav class="rnavlist">
                 <li>
                   <img
-                    v-if="todayRecommended.title.imgsrc"
-                    :src="todayRecommended.rightPicTop.imgsrc"
+                    :src="trrightTop.imgsrc"
                     alt
                   />
                 </li>
                 <li>
                   <img
-                    v-if="todayRecommended.title.imgsrc"
-                    :src="todayRecommended.rightPicDown[0].imgsrc"
+                    :src="trrightDown1.imgsrc"
                     alt
                   />
                 </li>
                 <li>
                   <img
-                    v-if="todayRecommended.title.imgsrc"
-                    :src="todayRecommended.rightPicDown[1].imgsrc"
+                    :src="trrightDown2.imgsrc"
                     alt
                   />
                 </li>
@@ -95,40 +92,40 @@
           </div>
         </section>
         <!-- 新品上市 -->
-        <section class="navlist3" v-if="newshoppinp.title.imgsrc">
-          <div class="rTitle">
-            <img :src="newshoppinp.title.imgsrc" alt />
+        <section class="navlist3">
+          <div class="rTitle" >
+            <img :src="nstitle.imgsrc" alt />
           </div>
           <div class="rMain">
             <div class="rMainLeft">
-              <img :src="newshoppinp.leftPIc.imgsrc" alt />
+              <img :src="nsleft.imgsrc" alt />
             </div>
             <div class="rMainRight">
-              <nav class="rnavlist">
+              <nav class="rnavlist" v-infinite-scroll style="overflow:auto">
                 <li>
-                  <img :src="newshoppinp.rightPicTop.imgsrc" alt />
+                  <img :src="nsrightTop.imgsrc" alt />
                 </li>
                 <li>
-                  <img :src="newshoppinp.rightPicDown[0].imgsrc" alt />
+                  <img :src="nsDown1.imgsrc" alt />
                 </li>
                 <li>
-                  <img :src="newshoppinp.rightPicDown[1].imgsrc" alt />
+                  <img :src="nsDown2.imgsrc" alt />
                 </li>
               </nav>
             </div>
           </div>
         </section>
         <!-- 美家整装 -->
-        <section class="navlist4" lazy>
+        <section class="navlist4">
           <div class="nav4title1">
             <img :src="equipped.titleSrc" alt />
           </div>
           <!-- 新中式 -->
-          <div class="nav4title2" lazy>
-            <img :src="equipped.Chinese.title.imgsrc" alt />
+          <div class="nav4title2" >
+            <img :src="eqChinese.imgsrc" alt />
           </div>
-          <div class="equippedWrap">
-            <figure v-for="(o,idx) in equipped.Chinese.main" :key="idx">
+          <div class="equippedWrap" style="overflow:auto">
+            <figure v-for="(o,idx) in eqChinese.main" :key="idx">
               <div class="equippedImg">
                 <img :src="o.imgsrc" />
               </div>
@@ -139,11 +136,11 @@
             </figure>
           </div>
           <!-- 美式 -->
-          <div class="nav4title2" lazy>
-            <img :src="equipped.America.title.imgsrc" alt />
+          <div class="nav4title2">
+            <img :src="eqAmerica.imgsrc" alt />
           </div>
           <div class="equippedWrap">
-            <figure v-for="(o,idx) in equipped.America.main" :key="idx">
+            <figure v-for="(o,idx) in eqAmerica.main" :key="idx">
               <div class="equippedImg">
                 <img :src="o.imgsrc" />
               </div>
@@ -154,11 +151,11 @@
             </figure>
           </div>
           <!-- 欧式 -->
-          <div class="nav4title2" lazy>
-            <img :src="equipped.Europe.title.imgsrc" alt />
+          <div class="nav4title2">
+            <img :src="eqEurope.imgsrc" alt />
           </div>
           <div class="equippedWrap">
-            <figure v-for="(o,idx) in equipped.Europe.main" :key="idx">
+            <figure v-for="(o,idx) in eqEurope.main" :key="idx">
               <div class="equippedImg">
                 <img :src="o.imgsrc" />
               </div>
@@ -169,7 +166,7 @@
             </figure>
           </div>
           <!-- 热卖单品 -->
-          <div class="hotgoods" lazy>
+          <div class="hotgoods">
             <div class="lunbo">
               <div class="lunboImgWrap" :style="lunboShow">
                 <div class="lunboImg" v-for="item in hotBanner" :key="item.index">
@@ -181,7 +178,7 @@
           </div>
         </section>
         <!-- 楼层style -->
-        <section class="menu2" lazy>
+        <section class="menu2" >
           <el-menu
             :default-active="activeIndex3"
             class="el-menu-demo"
@@ -201,7 +198,7 @@
             </el-menu-item>
           </el-menu>
           <section class="menu2List">
-            <el-row>
+            <el-row v-infinite-scroll style="overflow:auto">
               <el-col :span="24" v-for="(item,idx) in style" :key="idx" :offset="0">
                 <el-card :body-style="{ padding: '14px'}" lazy>
                   <img :src="item.imgsrc" class="image" />
@@ -229,9 +226,9 @@
 </template>
 <script>
 // import axios from "axios";
-import {local} from '../Api'
 import menulist from "./Menu.vue";
 import footernav from "../pages/footernav.vue";
+import { local } from '../Api';
 export default {
   data() {
     return {
@@ -319,38 +316,52 @@ export default {
       navlist2: [
         //瓷砖
         {
-          src:"http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg",
-          num:1
+          src:
+            "http://pic1.quanmingwang.com/shop/DJ54V7Ajbv_20180329_!!85699.jpg",
+          num: 1
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/s8nkNzU0Mc_20180329_!!89315.jpg",
-          num:5
+          num: 5
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/9VqPNQhbvk_20180329_!!79269.jpg",
-          num:6
+          num: 6
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/1OHyOqaKg3_20180329_!!76066.jpg",
-          num:7
+          num: 7
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/3rpwFyMngd_20180416_!!10252.jpg",
-          num:2
+          num: 2
         },
         {
           src:
             "http://pic1.quanmingwang.com/shop/iDh9o4H5GX_20180329_!!65102.jpg",
-          num:3
+          num: 3
         }
       ],
       todayRecommended: {}, //今日推荐
+      trtitle:{},
+      trleft:{},
+      trrightTop:{},
+      trrightDown1:{},
+      trrightDown2:{},
       newshoppinp: {}, //今日上市
+      nstitle:{},
+      nsleft:{},
+      nsrightTop:{},
+      nsDown1:{},
+      nsDown2:{},
       equipped: {}, //美家整装
+      eqChinese:{},
+      eqAmerica:{},
+      eqEurope:{},
       hotBanner: [], //热卖单品轮播图
       style: [], //楼层style
       menu2: [
@@ -373,9 +384,9 @@ export default {
       ]
     };
   },
-  watch:{
-    num(newVal,oldVal){
-      if(newVal!=0&&newVal!=oldVal){
+  watch: {
+    num(newVal, oldVal) {
+      if (newVal != 0 && newVal != oldVal) {
         this.getMenu(newVal);
       }
     }
@@ -386,20 +397,20 @@ export default {
     },
     getNum(idx) {
       this.num = idx;
-      this.activeIndex=idx.toString();
+      this.activeIndex = idx.toString();
     },
-    choose(idx){
-      if(idx=="1"){
+    choose(idx) {
+      if (idx == "1") {
         this.getNum(6);
-      }else if(idx=="2"){
+      } else if (idx == "2") {
         this.getNum(7);
-      }else if(idx=="3"){
+      } else if (idx == "3") {
         this.getNum(8);
-      }else if(idx=="4"){
+      } else if (idx == "4") {
         this.getNum(10);
-      }else if(idx=="5"){
+      } else if (idx == "5") {
         this.getNum(0);
-      }else if(idx=="7"){
+      } else if (idx == "7") {
         this.getNum(11);
       }
     },
@@ -451,21 +462,21 @@ export default {
       setInterval(this.autPlay, 3000);
     },
     menu2List(idx) {
-      let s = 3700;
+      let s = 2340;
       if (idx == 1) {
-        s = 3938;
+        s = 2547;
       } else if (idx == 2) {
-        s = 4407;
+        s = 3015;
       } else if (idx == 3) {
-        s = 5112;
+        s = 3723;
       }
       document.body.scrollTop = s;
     },
-    handleScroll(e) {
+    handleScroll() {
       var scrollY =
         document.documentElement.scrollTop || document.body.scrollTop;
       // console.log(scrollY); //3700 3938  4407  5112
-      if (scrollY >= 3700) {
+      if (scrollY >= 2350) {
         this.menu2Style.position = "fixed";
         this.menu2Style.top = "45px";
       } else {
@@ -490,8 +501,8 @@ export default {
             o[key] = this.imgString + o[key];
           } else {
             for (let i in o[key]) {
-              if (i == "title") {
-                o[key][i].imgsrc = this.imgString + o[key][i].imgsrc;
+              if (i == "imgsrc") {
+                o[key][i] = this.imgString + o[key][i];
               } else {
                 for (let m in o[key][i]) {
                   o[key][i][m].imgsrc = this.imgString + o[key][i][m].imgsrc;
@@ -512,42 +523,56 @@ export default {
         this.ten_class = o;
       } else if (name == "todayRecommended") {
         this.todayRecommended = o;
+        this.trtitle=o.title;
+        this.trleft=o.leftPIc;
+        this.trrightTop=o.rightPicTop;
+        this.trrightDown1=o.rightPicDown[0];
+        this.trrightDown2=o.rightPicDown[1];
       } else if (name == "newshoppinp") {
         this.newshoppinp = o;
+        this.nstitle=o.title;
+        this.nsleft=o.leftPIc;
+        this.nsrightTop=o.rightPicTop;
+        this.nsDown1=o.rightPicDown[0];
+        this.nsDown2=o.rightPicDown[1];
       } else if (name == "equipped") {
         this.equipped = o;
+        this.eqChinese=o.Chinese;
+        this.eqAmerica=o.America;
+        this.eqEurope=o.Europe;
       } else if (name == "hotBanner") {
         this.hotBanner = o;
       } else if (name == "style") {
         this.style = o;
       }
+    },
+    async getRecommndMsg() {
+      
+        //  推荐页
+        
+        let {
+          data: { data }
+        } = await local.get("/home");
+        let m = data[0].mainbanner; //轮播图
+        let t = data[0].ten_class; //选择
+        let d = data[0].todayRecommended;
+        let n = data[0].newshoppinp;
+        let e = data[0].equipped;
+        let h = data[0].hotBanner;
+        let s = data[0].style;
+        this.getImgSrc(m, "mainbanner");
+        this.getImgSrc(t, "ten_class");
+        this.getImgSrc(d, "todayRecommended");
+        this.getImgSrc(n, "newshoppinp");
+        this.getImgSrc(e, "equipped");
+        this.getImgSrc(h, "hotBanner");
+        this.getImgSrc(s, "style");
+      
     }
   },
-  async created() {
-    // this.activeIndex = this.$route.num;
-    try {
-      //  推荐页
-      this.play();
-      let {
-        data: { data }
-      } = await local.get("/home");
-      let m = data[0].mainbanner; //轮播图
-      let t = data[0].ten_class; //选择
-      let d = data[0].todayRecommended;
-      let n = data[0].newshoppinp;
-      let e = data[0].equipped;
-      let h = data[0].hotBanner;
-      let s = data[0].style;
-      this.getImgSrc(m, "mainbanner");
-      this.getImgSrc(t, "ten_class");
-      this.getImgSrc(d, "todayRecommended");
-      this.getImgSrc(n, "newshoppinp");
-      this.getImgSrc(e, "equipped");
-      this.getImgSrc(h, "hotBanner");
-      this.getImgSrc(s, "style");
-    } catch (error) {
-      console.log(error);
-    }
+  created() {
+    this.play();
+    this.getRecommndMsg();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
@@ -613,7 +638,7 @@ header {
     height: vw(90);
     padding: vw(7);
     overflow: hidden;
-    z-index: 66;
+    z-index: 10;
     justify-content: space-around;
     align-items: center;
     a {
@@ -896,7 +921,7 @@ main {
         position: relative;
         left: 0;
         right: 0;
-        z-index: 99;
+        z-index: 999;
         li {
           width: 25%;
           height: vw(80) !important;

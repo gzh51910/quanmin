@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 创建axios实例
 // 测试的时候需要改自己的ip地址加端口1910
-const baseURL='http://120.76.130.35:3435';
+const baseURL='http://182.92.109.17:1180';
 const imgString= `${baseURL}/img/`
 const local = axios.create({
     baseURL
