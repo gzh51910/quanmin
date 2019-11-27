@@ -236,7 +236,6 @@ export default {
       num: 0,
       showMSg: [],
       imgString: local.imgString,
-      // activeIndex2: "/home",
       menu: [
         {
           name: "0",
@@ -304,7 +303,6 @@ export default {
       mark: 0,
       index: "1",
       lunboShow: {
-        // transform: translateX(0)
         left: 0
       },
       menu2Style: {
@@ -436,18 +434,17 @@ export default {
         this.showMSg.list = o;
       }
     },
+    //分页
     async getMenu(index) {
       let {
         data: { data }
       } = await local.get("/home/fenye", {
-        params: { index }
+        index//params: { index }
       });
       this.showMSg = data[0];
       this.getmsgSrc(this.showMSg.bannerlunbo, "bannerlunbo");
       this.getmsgSrc(this.showMSg.sors, "sors");
       this.getmsgSrc(this.showMSg.list, "list");
-      // console.log("数据："+this.showMSg);
-      // console.log(this.showMSg);
     },
     // 推荐页
     autPlay() {
@@ -546,10 +543,8 @@ export default {
         this.style = o;
       }
     },
+    //  推荐页
     async getRecommndMsg() {
-      
-        //  推荐页
-        
         let {
           data: { data }
         } = await local.get("/home");
