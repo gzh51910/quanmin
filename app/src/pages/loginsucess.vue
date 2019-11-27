@@ -151,8 +151,8 @@ export default {
 }
 .second {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  align-items:center;
   z-index: 2;
   position: absolute;
   bottom: -30%;
@@ -163,14 +163,18 @@ export default {
   margin-left: -43.3%;
   background: white;
   overflow: hidden;
+  .el-row{
+    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  }
   i {
-    // margin-left: vw(23);
-    // text-align: center;
     font-size: vw(70);
   }
   .el-col {
-    align-self: center;
-    margin-top: vw(46);
+    >div{
+      text-align: center;
+    }
   }
 }
 .secondbox {
